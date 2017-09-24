@@ -1,0 +1,15 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Models.Comments;
+
+namespace Comments.Models
+{
+    public class CommentContext : DbContext
+    {
+        public CommentContext(DbContextOptions<CommentContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Comment> Comments { get; set; }
+    }
+}
