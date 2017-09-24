@@ -1,13 +1,12 @@
 ﻿using Comments.Models;
 using Microsoft.AspNetCore.Mvc;
 using Models.Comments;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Comments.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/comment")]
     public class CommentController : Controller
     {
         private readonly CommentContext _context;
@@ -27,7 +26,6 @@ namespace Comments.Controllers
         [HttpGet]
         public IEnumerable<Comment> GetAll()
         {
-            Console.WriteLine("Doot");
             return _context.Comments.ToList();
         }
 
