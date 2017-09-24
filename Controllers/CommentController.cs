@@ -41,7 +41,7 @@ namespace Comments.Controllers
             return new ObjectResult(comment);
         }
 
-        // POST api/values
+        // POST api/comments
         [HttpPost]
         public IActionResult Create([FromBody] Comment comment)
         {
@@ -56,7 +56,7 @@ namespace Comments.Controllers
             return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
         }
 
-        // PUT api/values/5
+        // PUT api/comments/5
         [HttpPut("{id}")]
         public IActionResult Update(long id, [FromBody] Comment comment)
         {
@@ -79,7 +79,7 @@ namespace Comments.Controllers
             return new NoContentResult();
         }
 
-        // DELETE api/values/5
+        // DELETE api/comments/5
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {

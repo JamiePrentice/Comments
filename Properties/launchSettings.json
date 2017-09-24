@@ -19,7 +19,7 @@
     "Comments": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
+      "launchUrl": "api/comment",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
