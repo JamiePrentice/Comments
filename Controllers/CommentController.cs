@@ -17,7 +17,7 @@ namespace Comments.Controllers
 
             if (_context.Comments.Count() == 0)
             {
-                _context.Comments.Add(new Comment { Name = "comment1" });
+                _context.Comments.Add(new Comment("comment1", false));
                 _context.SaveChanges();
             }
         }
@@ -71,8 +71,8 @@ namespace Comments.Controllers
                 return NotFound();
             }
 
-            existingComment.IsComplete = comment.IsComplete;
-            existingComment.Name = comment.Name;
+            //existingComment.IsComplete = comment.IsComplete;
+            //existingComment.Name = comment.Name;
 
             _context.Comments.Update(existingComment);
             _context.SaveChanges();
