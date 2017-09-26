@@ -24,7 +24,15 @@ namespace Comments
             services.AddMvc();
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+				c.SwaggerDoc("v1", new Info
+				{
+					Version = "v1",
+					Title = "ToDo API",
+					Description = "A simple example ASP.NET Core Web API",
+					TermsOfService = "None",
+					Contact = new Contact { Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot" },
+					License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
+				});
 			});
         }
 
@@ -37,6 +45,12 @@ namespace Comments
             }
 
             app.UseMvc();
+
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+			});
         }
     }
 }
