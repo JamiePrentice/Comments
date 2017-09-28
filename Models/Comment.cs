@@ -20,6 +20,11 @@
 
         #region Constructors
 
+        public Comment()
+        {
+
+        }
+
         public Comment(string name, bool isComplete)
         {
             Name = name;
