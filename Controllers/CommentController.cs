@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Comments.Controllers
 {
-    [Route("api/comment")]
+    [Route("api/comments")]
     public class CommentController : Controller
     {
         private readonly CommentContext _context;
@@ -22,14 +22,14 @@ namespace Comments.Controllers
             }
         }
 
-        // GET api/comment
+        // GET api/comments
         [HttpGet]
         public IEnumerable<Comment> GetAll()
         {
             return _context.Comments.ToList();
         }
 
-        // GET api/comment/5
+        // GET api/comments/5
         [HttpGet("{id}", Name = "GetComment")]
         public IActionResult GetById(long id)
         {
@@ -50,7 +50,7 @@ namespace Comments.Controllers
                 return BadRequest();
             }
 
-            _context.Comments.Add(comment);
+            _context.Comments.Add(new Comment(comment.Name, comment.IsComplete));
             _context.SaveChanges();
 
             return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
