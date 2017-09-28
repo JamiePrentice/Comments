@@ -1,6 +1,9 @@
 # Autosave files
 *~
 
+# visual studio files that do... things?
+.vs\
+
 # build
 [Oo]bj/
 [Bb]in/
