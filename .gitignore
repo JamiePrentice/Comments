@@ -2,7 +2,7 @@
 *~
 
 # visual studio files that do... things?
-.vs\
+.vs/
 
 # build
 [Oo]bj/
