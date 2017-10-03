@@ -50,7 +50,7 @@ namespace Comments.Controllers
                 return BadRequest();
             }
 
-            _context.Comments.Add(new Comment(comment.Name, comment.IsComplete));
+            _context.Comments.Add(comment);
             _context.SaveChanges();
 
             return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
