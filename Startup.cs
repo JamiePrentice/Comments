@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.DependencyInjection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Comments
 {
@@ -22,18 +22,18 @@ namespace Comments
         {
             services.AddDbContext<CommentContext>(opt => opt.UseInMemoryDatabase("Comment"));
             services.AddMvc();
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new Info
-				{
-					Version = "v1",
-					Title = "ToDo API",
-					Description = "A simple example ASP.NET Core Web API",
-					TermsOfService = "None",
-					Contact = new Contact { Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot" },
-					License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
-				});
-			});
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "ToDo API",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = "None",
+                    Contact = new Contact { Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot" },
+                    License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,11 +46,11 @@ namespace Comments
 
             app.UseMvc();
 
-			app.UseSwagger();
-			app.UseSwaggerUI(c =>
-			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-			});
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
         }
     }
 }

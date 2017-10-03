@@ -22,7 +22,6 @@
 
         public Comment()
         {
-
         }
 
         public Comment(string name, bool isComplete)
