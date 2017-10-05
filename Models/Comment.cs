@@ -18,6 +18,9 @@
         // ? Deleted
         // # Reports - Seperate table?
 
+        // Seperate solution for models and mapping?
+        // API Solution?
+
         #region Constructors
 
         public Comment()
