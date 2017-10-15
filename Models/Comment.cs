@@ -1,25 +1,32 @@
-﻿namespace Models.Comments
+﻿using System;
+
+namespace Models.Comments
 {
     public class Comment
     {
+        #region Properties
+
         public long Id { get; set; }
 
-        public string Name { get; set; }
+        public string Username { get; set; }
 
-        public bool IsComplete { get; set; }
+        public string IPAddress { get; set; }
 
-        // Comment
-        // ? Username
-        // ? User IP
+        public DateTime Date { get; set; }
+
+        public string Doamin { get; set; }
+
+        public string Url { get; set; }
+
+        private bool deleted { get; set; }
+
         // ? User Fingerprint --- Need some kind of ID for banning.
-        // DateTime
-        // Domain
-        // URL
-        // ? Deleted
         // # Reports - Seperate table?
 
         // Seperate solution for models and mapping?
         // API Solution?
+
+        #endregion Properties
 
         #region Constructors
 
@@ -27,10 +34,13 @@
         {
         }
 
-        public Comment(string name, bool isComplete)
+        public Comment(string username, string ipAddress, DateTime date, string domain, string url)
         {
-            Name = name;
-            IsComplete = isComplete;
+            Username = username;
+            IPAddress = ipAddress;
+            Date = date;
+            Doamin = domain;
+            Url = url;
         }
 
         #endregion Constructors

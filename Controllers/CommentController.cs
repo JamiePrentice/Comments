@@ -1,6 +1,7 @@
 ﻿using Comments.Models;
 using Microsoft.AspNetCore.Mvc;
 using Models.Comments;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -17,7 +18,7 @@ namespace Comments.Controllers
 
             if (_context.Comments.Count() == 0)
             {
-                _context.Comments.Add(new Comment("comment1", false));
+                _context.Comments.Add(new Comment("Username", "127.0.0.1", DateTime.Now, "blog.google.com", "a-post-about-cats"));
                 _context.SaveChanges();
             }
         }
@@ -70,9 +71,6 @@ namespace Comments.Controllers
             {
                 return NotFound();
             }
-
-            //existingComment.IsComplete = comment.IsComplete;
-            //existingComment.Name = comment.Name;
 
             _context.Comments.Update(existingComment);
             _context.SaveChanges();
