@@ -6,6 +6,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Models.Request;
 using Swashbuckle.AspNetCore.Swagger;
+using System;
+using System.Threading.Tasks;
 
 namespace Comments
 {
@@ -37,7 +39,10 @@ namespace Comments
             });
 
             var request = new Request();
-            request.GetData();
+
+            Task<string> task = request.Send("http://mwolfhoffman.com");
+            task.Wait();
+            Console.WriteLine(task);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
