@@ -39,8 +39,8 @@ namespace Comments
             });
 
             var request = new Request();
-            Task<string> task = request.Send("http://mwolfhoffman.com");
-            Console.WriteLine(task.Result);
+            string task = request.Send("https://google.com").Result;
+            Console.WriteLine(task);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
