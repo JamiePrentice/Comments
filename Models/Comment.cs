@@ -20,7 +20,7 @@ namespace Models.Comments
 
 		public int ParentCommentId { get; set; }
 
-        private bool IsDeleted { get; set; }
+	    private bool IsDeleted { get; set; } = false;
 
         // ? User Fingerprint --- Need some kind of ID for banning.
         // # Reports - Seperate table?
