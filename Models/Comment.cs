@@ -44,7 +44,6 @@ namespace Models.Comments
             Doamin = domain;
             Url = url;
 	        ParentCommentId = parentCommentId;
-
         }
 
         #endregion Constructors
