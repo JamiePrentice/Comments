@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Models.Comments;
 
 namespace Comments.Models
 {
