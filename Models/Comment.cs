@@ -18,7 +18,9 @@ namespace Models.Comments
 
         public string Url { get; set; }
 
-        private bool deleted { get; set; }
+		public int ParentCommentId { get; set; }
+
+        private bool IsDeleted { get; set; }
 
         // ? User Fingerprint --- Need some kind of ID for banning.
         // # Reports - Seperate table?
@@ -34,13 +36,15 @@ namespace Models.Comments
         {
         }
 
-        public Comment(string username, string ipAddress, DateTime date, string domain, string url)
+        public Comment(string username, string ipAddress, DateTime date, string domain, string url, int parentCommentId)
         {
             Username = username;
             IPAddress = ipAddress;
             Date = date;
             Doamin = domain;
             Url = url;
+	        ParentCommentId = parentCommentId;
+
         }
 
         #endregion Constructors
