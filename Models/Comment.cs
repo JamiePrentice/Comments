@@ -47,5 +47,10 @@ namespace Models.Comments
         }
 
         #endregion Constructors
+
+	    public void Delete()
+	    {
+		    IsDeleted = true;
+	    }
     }
 }
