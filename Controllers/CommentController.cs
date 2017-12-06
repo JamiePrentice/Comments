@@ -27,12 +27,12 @@ namespace Comments.Controllers
         [HttpGet("{id}", Name = "GetComment")]
         public IActionResult GetById(long id)
         {
-            var comment = _context.Comments.FirstOrDefault(t => t.Id == id);
-            if (comment == null)
+			Comment existingComment = FindCommentById(id);
+			if (existingComment == null)
             {
                 return NotFound();
             }
-            return new ObjectResult(comment);
+            return new ObjectResult(existingComment);
         }
 
         // POST api/comments
@@ -59,8 +59,8 @@ namespace Comments.Controllers
                 return BadRequest();
             }
 
-            var existingComment = _context.Comments.FirstOrDefault(t => t.Id == id);
-            if (existingComment == null)
+			Comment existingComment = FindCommentById(id);
+			if (existingComment == null)
             {
                 return NotFound();
             }
@@ -74,15 +74,22 @@ namespace Comments.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(long id)
         {
-            var comment = _context.Comments.FirstOrDefault(t => t.Id == id);
-            if (comment == null)
+            Comment existingComment = FindCommentById(id);
+            if (FindCommentById(id) == null)
             {
                 return NotFound();
             }
 
-            _context.Comments.Remove(comment);
+	        existingComment.Delete();
+
+			_context.Comments.Remove(existingComment);
             _context.SaveChanges();
             return new NoContentResult();
         }
+
+	    private Comment FindCommentById(long id)
+	    {
+			return _context.Comments.FirstOrDefault(t => t.Id == id);
+		}
     }
 }
