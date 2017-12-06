@@ -75,7 +75,7 @@ namespace Comments.Controllers
         public IActionResult Delete(long id)
         {
             Comment existingComment = FindCommentById(id);
-            if (FindCommentById(id) == null)
+            if (existingComment == null)
             {
                 return NotFound();
             }
