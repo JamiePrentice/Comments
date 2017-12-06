@@ -14,12 +14,6 @@ namespace Comments.Controllers
         public CommentController(CommentContext context)
         {
             _context = context;
-
-            if (_context.Comments.Count() == 0)
-            {
-                _context.Comments.Add(new Comment("Username", "127.0.0.1", DateTime.Now, "blog.google.com", "a-post-about-cats", 0));
-                _context.SaveChanges();
-            }
         }
 
         // GET api/comments
