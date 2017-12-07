@@ -25,7 +25,7 @@ namespace Comments.Controllers
 
         // GET api/comments/5
         [HttpGet("{id}", Name = "GetComment")]
-        public IActionResult Get(long id)
+        public IActionResult Get(Guid id)
         {
 			Comment existingComment = FindCommentById(id);
 			if (existingComment == null)
@@ -52,7 +52,7 @@ namespace Comments.Controllers
 
         // PUT api/comments/5
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] Comment comment)
+        public IActionResult Update(Guid id, [FromBody] Comment comment)
         {
             if (comment == null || comment.Id != id)
             {
@@ -72,7 +72,7 @@ namespace Comments.Controllers
 
         // DELETE api/comments/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public IActionResult Delete(Guid id)
         {
             Comment existingComment = FindCommentById(id);
             if (existingComment == null)
@@ -87,7 +87,7 @@ namespace Comments.Controllers
             return new NoContentResult();
         }
 
-	    private Comment FindCommentById(long id)
+	    private Comment FindCommentById(Guid id)
 	    {
 			return _context.Comments.FirstOrDefault(t => t.Id == id);
 		}

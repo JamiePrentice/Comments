@@ -2,11 +2,9 @@
 
 namespace Comments.Models
 {
-    public class Comment
+    public class Comment : EntityObject
     {
         #region Properties
-
-        public long Id { get; set; }
 
         public string Username { get; set; }
 
@@ -19,8 +17,6 @@ namespace Comments.Models
         public string Url { get; set; }
 
 		public int ParentCommentId { get; set; }
-
-	    private bool IsDeleted { get; set; }
 
         // ? User Fingerprint --- Need some kind of ID for banning.
         // # Reports - Seperate table?
@@ -47,10 +43,5 @@ namespace Comments.Models
         }
 
         #endregion Constructors
-
-	    public void Delete()
-	    {
-		    IsDeleted = true;
-	    }
     }
 }
