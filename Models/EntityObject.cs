@@ -15,7 +15,7 @@ namespace Comments.Models
 
 		#endregion
 
-		private void Delete()
+		public void Delete()
 	    {
 		    IsDeleted = true;
 	    }
