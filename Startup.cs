@@ -27,11 +27,7 @@ namespace Comments
                 c.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-                    Title = "ToDo API",
-                    Description = "A simple example ASP.NET Core Web API",
-                    TermsOfService = "None",
-                    Contact = new Contact { Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot" },
-                    License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
+                    Title = "Comments API",
                 });
             });
         }
