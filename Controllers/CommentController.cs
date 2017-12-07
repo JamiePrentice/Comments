@@ -25,7 +25,7 @@ namespace Comments.Controllers
 
         // GET api/comments/5
         [HttpGet("{id}", Name = "GetComment")]
-        public IActionResult GetById(long id)
+        public IActionResult Get(long id)
         {
 			Comment existingComment = FindCommentById(id);
 			if (existingComment == null)
