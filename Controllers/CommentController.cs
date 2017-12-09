@@ -91,5 +91,25 @@ namespace Comments.Controllers
         {
             return _context.Comments.FirstOrDefault(t => t.Id == id);
         }
+
+        //[HttpPost("{id}/up")]
+        //public IActionResult VoteUp(Guid id)
+        //{
+        //}
+
+        //[HttpPost("{id}/down")]
+        //public IActionResult VoteDown(Guid id)
+        //{
+        //}
+
+        //[HttpPost("{id}/reply")]
+        //public IActionResult Reply(Guid id)
+        //{
+        //}
+
+        //[HttpPost("{id}/report")]
+        //public IActionResult Report(Guid id)
+        //{
+        //}
     }
 }
