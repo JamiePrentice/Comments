@@ -27,8 +27,8 @@ namespace Comments.Controllers
         [HttpGet("{id}", Name = "GetComment")]
         public IActionResult Get(Guid id)
         {
-			Comment existingComment = FindCommentById(id);
-			if (existingComment == null)
+            Comment existingComment = FindCommentById(id);
+            if (existingComment == null)
             {
                 return NotFound();
             }
@@ -59,8 +59,8 @@ namespace Comments.Controllers
                 return BadRequest();
             }
 
-			Comment existingComment = FindCommentById(id);
-			if (existingComment == null)
+            Comment existingComment = FindCommentById(id);
+            if (existingComment == null)
             {
                 return NotFound();
             }
@@ -80,16 +80,16 @@ namespace Comments.Controllers
                 return NotFound();
             }
 
-	        existingComment.Delete();
+            existingComment.Delete();
 
-			_context.Comments.Remove(existingComment);
+            _context.Comments.Remove(existingComment);
             _context.SaveChanges();
             return new NoContentResult();
         }
 
-	    private Comment FindCommentById(Guid id)
-	    {
-			return _context.Comments.FirstOrDefault(t => t.Id == id);
-		}
+        private Comment FindCommentById(Guid id)
+        {
+            return _context.Comments.FirstOrDefault(t => t.Id == id);
+        }
     }
 }
