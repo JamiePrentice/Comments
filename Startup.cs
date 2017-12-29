@@ -28,23 +28,9 @@ namespace Comments
                 c.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-<<<<<<< HEAD
-                    Title = "ToDo API",
-                    Description = "A simple example ASP.NET Core Web API",
-                    TermsOfService = "None",
-                    Contact = new Contact {Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot"},
-                    License = new License {Name = "Use under LICX", Url = "https://example.com/license"}
-                });
-            });
-
-            var request = new Request();
-            var task = request.Send("https://google.com").Result;
-            Console.WriteLine(task);
-=======
                     Title = "Comments API",
                 });
             });
->>>>>>> origin/master
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
