@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Models.Request
@@ -8,16 +7,12 @@ namespace Models.Request
     {
         public async Task<string> Send(string url)
         {
-            HttpClient client = new HttpClient();
+            var client = new HttpClient();
 
-            HttpResponseMessage response = await client.GetAsync(url);
-            HttpContent content = response.Content;
+            var response = await client.GetAsync(url);
+            var content = response.Content;
 
             return await content.ReadAsStringAsync();
-        }
-
-        public Request()
-        {
         }
     }
 }

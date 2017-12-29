@@ -1,12 +1,10 @@
 ﻿using System;
 
-namespace Models.Comments
+namespace Comments.Models
 {
-    public class Comment
+    public class Comment : EntityObject
     {
         #region Properties
-
-        public long Id { get; set; }
 
         public string Username { get; set; }
 
@@ -18,7 +16,7 @@ namespace Models.Comments
 
         public string Url { get; set; }
 
-        private bool deleted { get; set; }
+		public Guid? ParentCommentId { get; set; }
 
         // ? User Fingerprint --- Need some kind of ID for banning.
         // # Reports - Seperate table?
@@ -34,13 +32,14 @@ namespace Models.Comments
         {
         }
 
-        public Comment(string username, string ipAddress, DateTime date, string domain, string url)
+        public Comment(string username, string ipAddress, DateTime date, string domain, string url, Guid parentCommentId)
         {
             Username = username;
             IPAddress = ipAddress;
             Date = date;
             Doamin = domain;
             Url = url;
+	        ParentCommentId = parentCommentId;
         }
 
         #endregion Constructors

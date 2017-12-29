@@ -1,13 +1,11 @@
-﻿using Comments.Models;
+﻿using System;
+using Comments.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Models.Request;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
-using System.Threading.Tasks;
 
 namespace Comments
 {
@@ -30,34 +28,34 @@ namespace Comments
                 c.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
+<<<<<<< HEAD
                     Title = "ToDo API",
                     Description = "A simple example ASP.NET Core Web API",
                     TermsOfService = "None",
-                    Contact = new Contact { Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot" },
-                    License = new License { Name = "Use under LICX", Url = "https://example.com/license" }
+                    Contact = new Contact {Name = "Doot doot", Email = "", Url = "https://twitter.com/dootdoot"},
+                    License = new License {Name = "Use under LICX", Url = "https://example.com/license"}
                 });
             });
 
             var request = new Request();
-            string task = request.Send("https://google.com").Result;
+            var task = request.Send("https://google.com").Result;
             Console.WriteLine(task);
+=======
+                    Title = "Comments API",
+                });
+            });
+>>>>>>> origin/master
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseMvc();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-            });
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
         }
     }
 }
