@@ -16,7 +16,7 @@ namespace Comments.Models
 
         public string Url { get; set; }
 
-		public Guid? ParentCommentId { get; set; }
+		public int? ParentCommentId { get; set; }
 
         // ? User Fingerprint --- Need some kind of ID for banning.
         // # Reports - Seperate table?
@@ -32,7 +32,7 @@ namespace Comments.Models
         {
         }
 
-        public Comment(string username, string ipAddress, DateTime date, string domain, string url, Guid parentCommentId)
+        public Comment(string username, string ipAddress, DateTime date, string domain, string url, int parentCommentId)
         {
             Username = username;
             IPAddress = ipAddress;
