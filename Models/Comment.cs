@@ -6,7 +6,7 @@ namespace Comments.Models
     {
         #region Properties
 
-        public string Username { get; set; }
+        private string _Username { get; set; }
 
         public string IPAddress { get; set; }
 
@@ -17,6 +17,12 @@ namespace Comments.Models
         public string Url { get; set; }
 
 		public int? ParentCommentId { get; set; }
+
+        public string Username
+        {
+            get => _Username;
+            set => _Username = value;
+        }
 
         // ? User Fingerprint --- Need some kind of ID for banning.
         // # Reports - Seperate table?
