@@ -6,31 +6,55 @@ namespace Comments.Models
     {
         #region Properties
 
-        private string _Username { get; set; }
+        private string _Text;
+        private string _Username;
+        private string _IPAddress;
+        private string _Domain;
+        private string _Url;
+        private int? _ParentCommentId;
 
-        public string IPAddress { get; set; }
-
-        public DateTime Date { get; set; }
-
-        public string Doamin { get; set; }
-
-        public string Url { get; set; }
-
-		public int? ParentCommentId { get; set; }
-
+        #endregion Properties
+        
+        #region Getters & Setters
+        
+        public string Text
+        {
+            get => _Text;
+            set => _Text = value;
+        }
+        
         public string Username
         {
             get => _Username;
             set => _Username = value;
         }
 
-        // ? User Fingerprint --- Need some kind of ID for banning.
-        // # Reports - Seperate table?
+        public string IPAddress
+        {
+            get => _IPAddress;
+            set => _IPAddress = value;
+        }
 
-        // Seperate solution for models and mapping?
-        // API Solution?
+        public string Domain
+        {
+            get => _Domain;
+            set => _Domain = value;
+        }
 
-        #endregion Properties
+        public string Url
+        {
+            get => _Url;
+            set => _Url = value;
+        }
+        
+        public int? ParentCommentId
+        {
+            get => _ParentCommentId;
+            set => _ParentCommentId = value;
+        }
+
+        #endregion
+
 
         #region Constructors
 
@@ -38,12 +62,12 @@ namespace Comments.Models
         {
         }
 
-        public Comment(string username, string ipAddress, DateTime date, string domain, string url, int parentCommentId)
+        public Comment(string text, string username, string ipAddress, string domain, string url, int parentCommentId)
         {
+            Text = text;
             Username = username;
             IPAddress = ipAddress;
-            Date = date;
-            Doamin = domain;
+            Domain = domain;
             Url = url;
 	        ParentCommentId = parentCommentId;
         }
