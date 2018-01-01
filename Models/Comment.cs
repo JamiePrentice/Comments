@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Comments.Models
+﻿namespace Comments.Models
 {
     public class Comment : EntityObject
     {
