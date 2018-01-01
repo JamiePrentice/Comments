@@ -50,43 +50,6 @@ namespace Comments.Controllers
 			return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
 		}
 
-		// PUT api/comments/5
-		[HttpPut("{id}")]
-		public IActionResult Update(int id, [FromBody] Comment comment)
-		{
-			if (comment == null || comment.Id != id)
-			{
-				return BadRequest();
-			}
-
-			Comment existingComment = FindCommentById(id);
-			if (existingComment == null)
-			{
-				return NotFound();
-			}
-
-			_context.Comments.Update(existingComment);
-			_context.SaveChanges();
-			return new NoContentResult();
-		}
-
-		// DELETE api/comments/5
-		[HttpDelete("{id}")]
-		public IActionResult Delete(int id)
-		{
-			Comment existingComment = FindCommentById(id);
-			if (existingComment == null)
-			{
-				return NotFound();
-			}
-
-			//existingComment.Delete();
-
-			_context.Comments.Remove(existingComment);
-			_context.SaveChanges();
-			return new NoContentResult();
-		}
-
 		private Comment FindCommentById(int id)
 		{
 			return _context.Comments.FirstOrDefault(t => t.Id == id);
