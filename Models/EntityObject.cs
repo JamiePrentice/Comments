@@ -7,7 +7,11 @@ namespace Comments.Models
 		#region Properties
 
 		public int Id { get; set; }
-		public DateTime CreatedTime { get; set; }
+		public DateTime CreatedTime
+		{
+			get => CreatedTime;
+			set => CreatedTime = DateTime.Now;
+		}
 
 		#endregion Properties
 	}
