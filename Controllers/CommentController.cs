@@ -54,15 +54,25 @@ namespace Comments.Controllers
 			return _context.Comments.FirstOrDefault(t => t.Id == id);
 		}
 
-		//[HttpPost("{id}/up")]
-		//public IActionResult VoteUp(Guid id)
-		//{
-		//}
+		[HttpPost("{id}/up")]
+		public Comment VoteUp(int id)
+		{
+			Comment selected = _context.Comments.FirstOrDefault(t => t.Id == id);
+			selected?.PlusOne();
+			_context.SaveChanges();
 
-		//[HttpPost("{id}/down")]
-		//public IActionResult VoteDown(Guid id)
-		//{
-		//}
+			return selected;
+		}
+
+		[HttpPost("{id}/down")]
+		public Comment VoteDown(int id)
+		{
+			Comment selected = _context.Comments.FirstOrDefault(t => t.Id == id);
+			selected?.MinusOne();
+			_context.SaveChanges();
+
+			return selected;
+		}
 
 		//[HttpPost("{id}/reply")]
 		//public IActionResult Reply(Guid id)
