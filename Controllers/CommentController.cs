@@ -48,12 +48,14 @@ namespace Comments.Controllers
 
 			return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
 		}
-
-		private Comment FindCommentById(int id)
+		
+		// GET api/comments/5
+		[HttpGet("{domain}/{url}", Name = "GetComments")]
+		public IEnumerable<Comment> GetByUrl(string domain, string url)
 		{
-			return _context.Comments.FirstOrDefault(t => t.Id == id);
+			return FindByUrl(domain, url).ToList();
 		}
-
+		
 		[HttpPost("{id}/up")]
 		public Comment VoteUp(int id)
 		{
@@ -73,6 +75,22 @@ namespace Comments.Controllers
 
 			return selected;
 		}
+
+		#region Helpers
+
+		private IEnumerable<Comment> FindByUrl(string domain, string url)                               
+		{                                                                                               
+			return _context.Comments.Where(comment => comment.Domain == domain)                         
+									.Where(comment => comment.Url == url);                                                  
+		}                                                                                               
+                                                                                                  
+		private Comment FindCommentById(int id)                                                         
+		{                                                                                               
+			return _context.Comments.FirstOrDefault(comment => comment.Id == id);                       
+		}                                                                                               
+
+		#endregion Helpers
+	
 
 		//[HttpPost("{id}/reply")]
 		//public IActionResult Reply(Guid id)
