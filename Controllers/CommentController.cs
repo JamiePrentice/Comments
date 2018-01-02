@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Comments.Models;
+using Comments.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Comments.Controllers
@@ -19,18 +20,19 @@ namespace Comments.Controllers
 		[HttpGet]
 		public IEnumerable<Comment> GetAll()
 		{
-			return _context.Comments.ToList();
+			return new CommentQuery().QueryAll(_context);
 		}
 
 		// GET api/comments/5
 		[HttpGet("{id}", Name = "GetComment")]
 		public IActionResult Get(int id)
 		{
-			Comment existingComment = FindCommentById(id);
+			Comment existingComment = new CommentQuery().QueryById(_context, id);
 			if (existingComment == null)
 			{
 				return NotFound();
 			}
+
 			return new ObjectResult(existingComment);
 		}
 
@@ -53,7 +55,7 @@ namespace Comments.Controllers
 		[HttpGet("{domain}/{url}", Name = "GetComments")]
 		public IEnumerable<Comment> GetByUrl(string domain, string url)
 		{
-			return FindByUrl(domain, url).ToList();
+			return new CommentQuery().QueryByUrl(_context, domain, url).ToList();
 		}
 		
 		[HttpPost("{id}/up")]
@@ -75,23 +77,7 @@ namespace Comments.Controllers
 
 			return selected;
 		}
-
-		#region Helpers
-
-		private IEnumerable<Comment> FindByUrl(string domain, string url)                               
-		{                                                                                               
-			return _context.Comments.Where(comment => comment.Domain == domain)                         
-									.Where(comment => comment.Url == url);                                                  
-		}                                                                                               
-                                                                                                  
-		private Comment FindCommentById(int id)                                                         
-		{                                                                                               
-			return _context.Comments.FirstOrDefault(comment => comment.Id == id);                       
-		}                                                                                               
-
-		#endregion Helpers
-	
-
+		
 		//[HttpPost("{id}/reply")]
 		//public IActionResult Reply(Guid id)
 		//{
