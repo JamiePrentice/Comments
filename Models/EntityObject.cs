@@ -6,8 +6,8 @@ namespace Comments.Models
 	{
 		#region Properties
 
-		public int Id { get; set; }
-		public DateTime CreatedTime { get; set; } = DateTime.Now;
+		public int Id { get; protected set; }
+		public DateTime CreatedTime { get; protected set; } = DateTime.Now;
 
 		#endregion Properties
 	}

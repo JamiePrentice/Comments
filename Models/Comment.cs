@@ -9,7 +9,7 @@
         public string IPAddress { get; set; }
         public string Domain { get; set; }
         public string Url { get; set; }
-        public int Score { get; set; }
+        public int Score { get; protected set; }
         public int? ParentCommentId { get; set; }
 
         #endregion Properties
