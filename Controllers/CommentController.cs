@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Comments.Commands;
 using Comments.Contexts;
 using Comments.Models;
 using Comments.Queries;
@@ -46,9 +47,8 @@ namespace Comments.Controllers
 				return BadRequest();
 			}
 
-			_context.Comments.Add(comment);
-			_context.SaveChanges();
-
+			new CommentCommand().Create(_context, comment);
+			
 			return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
 		}
 		
