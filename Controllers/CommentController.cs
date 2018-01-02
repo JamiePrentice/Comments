@@ -61,7 +61,7 @@ namespace Comments.Controllers
 		[HttpPost("{id}/up")]
 		public Comment VoteUp(int id)
 		{
-			Comment selected = _context.Comments.FirstOrDefault(t => t.Id == id);
+			Comment selected = new CommentQuery().QueryById(_context, id);
 			selected?.PlusOne();
 			_context.SaveChanges();
 
@@ -71,7 +71,7 @@ namespace Comments.Controllers
 		[HttpPost("{id}/down")]
 		public Comment VoteDown(int id)
 		{
-			Comment selected = _context.Comments.FirstOrDefault(t => t.Id == id);
+			Comment selected = new CommentQuery().QueryById(_context, id);   
 			selected?.MinusOne();
 			_context.SaveChanges();
 
