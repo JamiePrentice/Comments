@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Comments.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Comments.Models
+namespace Comments.Contexts
 {
     public class CommentContext : DbContext
     {
