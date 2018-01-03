@@ -1,4 +1,6 @@
-﻿namespace Comments.Models
+﻿using Newtonsoft.Json;
+
+namespace Comments.Models
 {
     public class Comment : EntityObject
     {
@@ -9,8 +11,9 @@
         public string IPAddress { get; set; }
         public string Domain { get; set; }
         public string Url { get; set; }
-        public int Score { get; protected set; }
         public int? ParentCommentId { get; set; }
+        [JsonIgnore]
+        public int Score { get; protected set; }
 
         #endregion Properties
 
