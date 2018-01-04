@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Net;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Comments.Controllers
 {
@@ -7,9 +8,9 @@ namespace Comments.Controllers
 	{
 		// GET api/health
 		[HttpGet]
-		public string GetHealth()
+		public JsonResult GetHealth()
 		{
-			return "Healthy";
+			return new JsonResult("Healthy");
 		}
 	}
 }
