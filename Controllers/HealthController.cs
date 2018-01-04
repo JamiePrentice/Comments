@@ -2,15 +2,14 @@
 
 namespace Comments.Controllers
 {
-    [Route("api/health")]
-    public class HealthController : Controller
-    {
-
-        // GET api/health
-        [HttpGet]
-        public string GetHealth()
-        {
-            return "Healthy";
-        }
-    }
+	[Route("api/health")]
+	public class HealthController : Controller
+	{
+		// GET api/health
+		[HttpGet]
+		public string GetHealth()
+		{
+			return "Healthy";
+		}
+	}
 }

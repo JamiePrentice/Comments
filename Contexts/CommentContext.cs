@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Comments.Contexts
 {
-    public class CommentContext : DbContext
-    {
-        public CommentContext(DbContextOptions<CommentContext> options)
-            : base(options)
-        {
-        }
+	public class CommentContext : DbContext
+	{
+		public CommentContext(DbContextOptions<CommentContext> options)
+			: base(options)
+		{
+		}
 
-        public DbSet<Comment> Comments { get; set; }
-    }
+		public DbSet<Comment> Comments { get; set; }
+	}
 }

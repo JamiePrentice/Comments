@@ -1,10 +1,10 @@
-using System.Collections.Generic;
-using System.Linq;
 using Comments.Commands;
 using Comments.Contexts;
 using Comments.Models;
 using Comments.Queries;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Comments.Controllers
 {
@@ -48,17 +48,17 @@ namespace Comments.Controllers
 			}
 
 			new CommentCommand().Create(_context, comment);
-			
+
 			return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
 		}
-		
+
 		// GET api/comments/5
 		[HttpGet("{domain}/{url}", Name = "GetComments")]
 		public IEnumerable<Comment> GetByUrl(string domain, string url)
 		{
 			return new CommentQuery().QueryByUrl(_context, domain, url).ToList();
 		}
-		
+
 		[HttpPost("{id}/up")]
 		public Comment VoteUp(int id)
 		{
@@ -72,13 +72,13 @@ namespace Comments.Controllers
 		[HttpPost("{id}/down")]
 		public Comment VoteDown(int id)
 		{
-			Comment selected = new CommentQuery().QueryById(_context, id);   
+			Comment selected = new CommentQuery().QueryById(_context, id);
 			selected?.MinusOne();
 			_context.SaveChanges();
 
 			return selected;
 		}
-		
+
 		//[HttpPost("{id}/reply")]
 		//public IActionResult Reply(Guid id)
 		//{
