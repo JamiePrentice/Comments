@@ -11,5 +11,6 @@ namespace Comments.Contexts
 		}
 
 		public DbSet<Comment> Comments { get; set; }
+		public DbSet<Report> Reports { get; set; }
 	}
 }
