@@ -11,9 +11,9 @@ namespace Comments.Controllers
 	[Route("api/comments")]
 	public class CommentController : Controller
 	{
-		private readonly CommentContext _context;
+		private readonly Context _context;
 
-		public CommentController(CommentContext context)
+		public CommentController(Context context)
 		{
 			_context = context;
 		}
@@ -79,9 +79,17 @@ namespace Comments.Controllers
 			return selected;
 		}
 
-		//[HttpPost("{id}/report")]
-		//public IActionResult Report(Guid id)
-		//{
-		//}
+		[HttpPost("{id}/report")]
+		public IActionResult Report([FromBody] Report report)
+		{
+			if (report == null)
+			{
+				return BadRequest();
+			}
+
+			new ReportCommand().Create(_context, report);
+
+			return CreatedAtRoute("GetReport", new { id = report.Id }, report);
+		}
 	}
 }

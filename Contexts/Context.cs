@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Comments.Contexts
 {
-	public class CommentContext : DbContext
+	public class Context : DbContext
 	{
-		public CommentContext(DbContextOptions<CommentContext> options)
+		public Context(DbContextOptions<Context> options)
 			: base(options)
 		{
 		}
