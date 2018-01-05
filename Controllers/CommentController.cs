@@ -78,18 +78,5 @@ namespace Comments.Controllers
 
 			return selected;
 		}
-
-		[HttpPost("{id}/report")]
-		public IActionResult Report([FromBody] Report report)
-		{
-			if (report == null)
-			{
-				return BadRequest();
-			}
-
-			new ReportCommand().Create(_context, report);
-
-			return CreatedAtRoute("GetReport", new { id = report.Id }, report);
-		}
 	}
 }
