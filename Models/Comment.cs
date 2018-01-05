@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Comments.Models
+﻿namespace Comments.Models
 {
 	public class Comment : EntityObject
 	{
