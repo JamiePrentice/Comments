@@ -7,10 +7,7 @@ namespace Comments.Models
 	{
 		#region Properties
 
-		[JsonIgnore]
 		public int Id { get; protected set; }
-
-		[JsonIgnore]
 		public DateTime CreatedTime { get; protected set; } = DateTime.Now;
 
 		#endregion Properties
