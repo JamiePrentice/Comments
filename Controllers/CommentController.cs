@@ -79,11 +79,6 @@ namespace Comments.Controllers
 			return selected;
 		}
 
-		//[HttpPost("{id}/reply")]
-		//public IActionResult Reply(Guid id)
-		//{
-		//}
-
 		//[HttpPost("{id}/report")]
 		//public IActionResult Report(Guid id)
 		//{
