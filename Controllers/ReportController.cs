@@ -46,9 +46,9 @@ namespace Comments.Controllers
 				return BadRequest();
 			}
 
-			new ReportCommand().Create(_context, report);
+			Report createdReport = new ReportCommand().Create(_context, report);
 
-			return CreatedAtRoute("GetReport", new { id = report.Id }, report);
+			return CreatedAtRoute("GetReport", new { id = createdReport.Id }, createdReport);
 		}
 	}
 }

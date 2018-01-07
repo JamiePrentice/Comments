@@ -47,9 +47,9 @@ namespace Comments.Controllers
 				return BadRequest();
 			}
 
-			new CommentCommand().Create(_context, comment);
+			Comment createdComment = new CommentCommand().Create(_context, comment);
 
-			return CreatedAtRoute("GetComment", new { id = comment.Id }, comment);
+			return CreatedAtRoute("GetComment", new { id = createdComment.Id }, createdComment);
 		}
 
 		// GET api/comments/5
