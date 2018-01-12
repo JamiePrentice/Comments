@@ -1,11 +1,18 @@
-dotnet:
-  build: ./dotnet
-
-nginx:
-  build: ./nginx
-  container_name: dotnet.local
-  ports:
-    - "80:80"
-    - "443:443"
-  links:
-    - dotnet
+version: '2'
+ 
+services:
+  app:
+    build:
+      context:  ./dotnet
+      dockerfile: Dockerfile
+    expose:
+      - "5000"
+ 
+  proxy:
+    build:
+      context:  ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - "8084:80"
+    links:
+      - app
