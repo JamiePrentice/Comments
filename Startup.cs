@@ -21,11 +21,12 @@ namespace Comments
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			//var connectionString = Configuration.GetConnectionString("Context");
-			//services.AddEntityFrameworkNpgsql().AddDbContext<Context>(options => options.UseNpgsql(connectionString));
-
-			services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
 			services.AddMvc();
+			services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt => 
+				opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
+			);
+
+//			services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
 			services.AddSwaggerGen(c =>
 			{
 				c.SwaggerDoc("v1", new Info
