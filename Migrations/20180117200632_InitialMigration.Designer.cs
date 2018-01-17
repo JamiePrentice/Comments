@@ -11,7 +11,7 @@ using System;
 namespace Comments.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20180117182828_InitialMigration")]
+    [Migration("20180117200632_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

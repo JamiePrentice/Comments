@@ -1,6 +1,7 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System;
+using System.Collections.Generic;
 
 namespace Comments.Migrations
 {
@@ -9,8 +10,8 @@ namespace Comments.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                "Comments",
-                table => new
+                name: "Comments",
+                columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
@@ -23,11 +24,14 @@ namespace Comments.Migrations
                     Url = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_Comments", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                });
 
             migrationBuilder.CreateTable(
-                "Reports",
-                table => new
+                name: "Reports",
+                columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
@@ -36,16 +40,19 @@ namespace Comments.Migrations
                     IPAddress = table.Column<string>(nullable: true),
                     Text = table.Column<string>(nullable: true)
                 },
-                constraints: table => { table.PrimaryKey("PK_Reports", x => x.Id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reports", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                "Comments");
+                name: "Comments");
 
             migrationBuilder.DropTable(
-                "Reports");
+                name: "Reports");
         }
     }
 }
