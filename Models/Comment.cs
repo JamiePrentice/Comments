@@ -1,46 +1,47 @@
 ﻿namespace Comments.Models
 {
-	public class Comment : EntityObject
-	{
-		#region Properties
+    public class Comment : EntityObject
+    {
+        public void PlusOne()
+        {
+            Score++;
+        }
 
-		public string Text { get; set; }
-		public string Username { get; set; }
-		public string IPAddress { get; set; }
-		public string Domain { get; set; }
-		public string Url { get; set; }
-		public int? ParentCommentId { get; set; }
-		public int Score { get; protected set; }
+        public void MinusOne()
+        {
+            Score--;
+        }
 
-		#endregion Properties
+        #region Properties
 
-		#region Constructors
+        public string Text { get; set; }
+        public string Username { get; set; }
+        public string IPAddress { get; set; }
+        public string Domain { get; set; }
+        public string Url { get; set; }
+        public int? ParentCommentId { get; set; }
+        public int Score { get; protected set; }
 
-		public Comment()
-		{
-		}
+        #endregion Properties
 
-		public Comment(string text, string username, string ipAddress, string domain, string url, int score, int parentCommentId)
-		{
-			Text = text;
-			Username = username;
-			IPAddress = ipAddress;
-			Domain = domain;
-			Url = url;
-			Score = score;
-			ParentCommentId = parentCommentId;
-		}
+        #region Constructors
 
-		#endregion Constructors
+        public Comment()
+        {
+        }
 
-		public void PlusOne()
-		{
-			Score++;
-		}
+        public Comment(string text, string username, string ipAddress, string domain, string url, int score,
+            int parentCommentId)
+        {
+            Text = text;
+            Username = username;
+            IPAddress = ipAddress;
+            Domain = domain;
+            Url = url;
+            Score = score;
+            ParentCommentId = parentCommentId;
+        }
 
-		public void MinusOne()
-		{
-			Score--;
-		}
-	}
+        #endregion Constructors
+    }
 }

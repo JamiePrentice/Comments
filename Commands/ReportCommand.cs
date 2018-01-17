@@ -3,14 +3,14 @@ using Comments.Models;
 
 namespace Comments.Commands
 {
-	public class ReportCommand
-	{
-		public Report Create(Context context, Report report)
-		{
-			context.Reports.Add(report);
-			context.SaveChanges();
+    public class ReportCommand
+    {
+        public Report Create(Context context, Report report)
+        {
+            context.Reports.Add(report);
+            context.SaveChanges();
 
-			return report;
-		}
-	}
+            return report;
+        }
+    }
 }

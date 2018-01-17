@@ -3,19 +3,19 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace Comments
 {
-	public class Program
-	{
-		public static void Main(string[] args)
-		{
-			BuildWebHost(args).Run();
-		}
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BuildWebHost(args).Run();
+        }
 
-		public static IWebHost BuildWebHost(string[] args)
-		{
-			return WebHost.CreateDefaultBuilder(args)
-				.UseApplicationInsights()
-				.UseStartup<Startup>()
-				.Build();
-		}
-	}
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                .UseApplicationInsights()
+                .UseStartup<Startup>()
+                .Build();
+        }
+    }
 }
