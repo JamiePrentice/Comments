@@ -57,7 +57,7 @@ namespace Comments.Controllers
         public Comment VoteUp(int id)
         {
             var selected = new CommentQuery().QueryById(_context, id);
-            selected?.PlusOne();
+            selected?.IncrementScore();
             _context.SaveChanges();
 
             return selected;
@@ -67,7 +67,7 @@ namespace Comments.Controllers
         public Comment VoteDown(int id)
         {
             var selected = new CommentQuery().QueryById(_context, id);
-            selected?.MinusOne();
+            selected?.DecrementScore();
             _context.SaveChanges();
 
             return selected;

@@ -2,12 +2,12 @@
 {
     public class Comment : EntityObject
     {
-        public void PlusOne()
+        public void IncrementScore()
         {
             Score++;
         }
 
-        public void MinusOne()
+        public void DecrementScore()
         {
             Score--;
         }
