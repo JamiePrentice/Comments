@@ -22,11 +22,11 @@ namespace Comments
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
-                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
-            );
+//            services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
+//                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
+//            );
 
-//			services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
+			services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
