@@ -11,7 +11,7 @@ function postComment() {
         "parentCommentId": 0,
     };
 
-    postRequest("localhost:port/api/comment", comment);
+    postRequest("http://localhost:5000/api/comments", comment);
 }
 
 function postRequest(url, data) {
