@@ -1,10 +1,9 @@
 generateForm();
 
 function postComment() {
-    alert("Well hello there");
     var comment = {
         "text": document.getElementById("comments-comment").value,
-        "username": document.getElementById("comments-comment").value,
+        "username": document.getElementById("comments-name").value,
         "ipAddress": "string",
         "domain": "string",
         "url": "string",
@@ -15,6 +14,7 @@ function postComment() {
 }
 
 function postRequest(url, data) {
+    data =JSON.stringify(data);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
@@ -23,11 +23,10 @@ function postRequest(url, data) {
             var json = JSON.parse(xhr.responseText);
         }
     };
-    xhr.send(data);
+    xhr.send(JSON.stringify(data));
 }
 
 function generateForm() {
-
     var form = document.getElementById("comments");
     form.appendChild(document.createTextNode("Comment:"));
     form.appendChild(document.createElement("br"));
@@ -44,6 +43,7 @@ function generateForm() {
     form.appendChild(document.createTextNode("Name:"));
 
     var name = form.appendChild(document.createElement("input"));
+    name.id = "comments-name";
     name.name = "name";
     name.type = "text";
 
