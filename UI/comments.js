@@ -1,8 +1,5 @@
 generateForm();
-
-function getComments(){
-    getRequest("http://localhost:5000/api/comments");
-}
+renderComments();
 
 function postComment() {
     var comment = {
@@ -29,11 +26,11 @@ function postRequest(url, data) {
     xhr.send(JSON.stringify(data));
 }
 
-function getRequest(url){
+function getRequest(url) {
     var xhr = new XMLHttpRequest();
     xhr.open("Get", url, false);
     xhr.send(null);
-    
+
     return xhr.responseText
 }
 
@@ -63,4 +60,25 @@ function generateForm() {
     button.onclick = function () {
         postComment();
     };
+
+    var list = form.appendChild(document.createElement("div"));
+    list.id = "comments-list"
+}
+
+function renderComment(data) {
+    var list = document.getElementById("comments-list");
+
+    var comment = list.appendChild(document.createElement("div"));
+    comment.class = "comment"
+
+    comment.appendChild(document.createTextNode(data.text));
+    comment.appendChild(document.createElement("hr"));
+}
+
+function renderComments() {
+    var comments = getRequest("http://localhost:5000/api/comments");
+    comments = JSON.parse(comments);
+    comments.forEach(comment => {
+        renderComment(comment);
+    });
 }
