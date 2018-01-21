@@ -85,9 +85,17 @@ function renderComment(data) {
     comment.appendChild(document.createTextNode(data.text));
     comment.appendChild(document.createElement("br"));
 
-    var up = comment.appendChild(document.createElement("a"));
-    up.setAttribute("href", "javascript:incrementScore(" + data.id + ")");
-    up.innerHTML = "up";
+    var up = comment.appendChild(document.createElement("button"));
+    up.innerHTML = "Up";
+    up.onclick = function () {
+        incrementScore(data.id);
+    };
+
+    var down = comment.appendChild(document.createElement("button"));
+    down.innerHTML = "Down";
+    down.onclick = function () {
+        decrementScore(data.id);
+    };
 
     comment.appendChild(document.createTextNode(data.username + " @ " + data.createdTime));
 
