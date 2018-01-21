@@ -1,5 +1,9 @@
 generateForm();
 
+function getComments(){
+    getRequest("http://localhost:5000/api/comments");
+}
+
 function postComment() {
     var comment = {
         "text": document.getElementById("comments-comment").value,
@@ -14,7 +18,6 @@ function postComment() {
 }
 
 function postRequest(url, data) {
-    data =JSON.stringify(data);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-type", "application/json");
@@ -24,6 +27,14 @@ function postRequest(url, data) {
         }
     };
     xhr.send(JSON.stringify(data));
+}
+
+function getRequest(url){
+    var xhr = new XMLHttpRequest();
+    xhr.open("Get", url, false);
+    xhr.send(null);
+    
+    return xhr.responseText
 }
 
 function generateForm() {
