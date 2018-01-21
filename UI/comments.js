@@ -2,6 +2,7 @@ generateForm();
 renderComments();
 
 function postComment() {
+    clearComments();
     var comment = {
         "text": document.getElementById("comments-comment").value,
         "username": document.getElementById("comments-name").value,
@@ -12,6 +13,15 @@ function postComment() {
     };
 
     postRequest("http://localhost:5000/api/comments", comment);
+    renderComments();
+}
+
+function incrementScore(id) {
+    postRequest("http://localhost:5000/api/comments/" + id + "/up", null);
+}
+
+function decrementScore(id) {
+    postRequest("http://localhost:5000/api/comments/" + id + "/down", null);
 }
 
 function postRequest(url, data) {
@@ -66,12 +76,21 @@ function generateForm() {
 }
 
 function renderComment(data) {
+    console.log(data);
     var list = document.getElementById("comments-list");
 
     var comment = list.appendChild(document.createElement("div"));
     comment.class = "comment"
 
     comment.appendChild(document.createTextNode(data.text));
+    comment.appendChild(document.createElement("br"));
+
+    var up = comment.appendChild(document.createElement("a"));
+    up.setAttribute("href", "javascript:incrementScore(" + data.id + ")");
+    up.innerHTML = "up";
+
+    comment.appendChild(document.createTextNode(data.username + " @ " + data.createdTime));
+
     comment.appendChild(document.createElement("hr"));
 }
 
@@ -81,4 +100,9 @@ function renderComments() {
     comments.forEach(comment => {
         renderComment(comment);
     });
+}
+
+function clearComments() {
+    var list = document.getElementById("comments-list");
+    list.innerHTML = "";
 }
