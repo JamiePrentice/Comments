@@ -1,24 +1,30 @@
-const baseUrl = "http://localhost:5000/api/";
+const baseUrl = "http://localhost:49737/api/";
 
 generateForm();
 renderComments();
 loadCss();
 
 function postComment() {
-    var comment = {
-        "text": document.getElementById("comments-comment").value,
-        "username": document.getElementById("comments-name").value,
-        "ipAddress": "string",
-        "domain": window.location.hostname.replace("www.", ""),
-        "url": window.location.pathname,
-        "parentCommentId": 0,
-    };
+    var commentValue = document.getElementById("comments-comment").value;
+    var usernameValue = document.getElementById("comments-name").value;
 
-    postRequest(baseUrl + "comments", comment).then(() => {
-        clearInput();
-        clearComments();
-        renderComments();
-    });
+    if (commentValue != "") {
+        var comment = {
+            "text": commentValue,
+            "username": usernameValue,
+            "ipAddress": "string",
+            "domain": window.location.hostname.replace("www.", ""),
+            "url": window.location.pathname,
+            "parentCommentId": 0,
+        };
+
+        postRequest(baseUrl + "comments", comment).then(() => {
+            clearInput();
+            clearComments();
+            renderComments();
+        });
+    }
+
 }
 
 function incrementScore(id) {
@@ -90,14 +96,16 @@ function generateForm() {
 
     form.appendChild(document.createElement("br"));
 
-    form.appendChild(document.createTextNode("Name:"));
+    var submitDiv = form.appendChild(document.createElement("div"));
+    submitDiv.id = "comments-submitDiv";
 
-    var name = form.appendChild(document.createElement("input"));
+    submitDiv.appendChild(document.createTextNode("Name: "));
+    var name = submitDiv.appendChild(document.createElement("input"));
     name.id = "comments-name";
     name.name = "name";
     name.type = "text";
 
-    var button = form.appendChild(document.createElement("button"));
+    var button = submitDiv.appendChild(document.createElement("button"));
     button.innerHTML = "Post";
     button.onclick = function () {
         postComment();
@@ -155,3 +163,5 @@ function clearInput() {
     document.getElementById("comments-comment").value = "";
     document.getElementById("comments-name").value = "";
 }
+
+// Date.prototype.toLocaleTimeString()
