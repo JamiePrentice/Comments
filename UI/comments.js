@@ -23,10 +23,12 @@ function postComment() {
 
 function incrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/up", null);
+    document.getElementById("comment-score-" + id).innerHTML++;
 }
 
 function decrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/down", null);
+    document.getElementById("comment-score-" + id).innerHTML--;
 }
 
 function postRequest(url, data) {
