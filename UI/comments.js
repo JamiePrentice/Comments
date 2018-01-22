@@ -37,7 +37,7 @@ function postRequest(url, data) {
         xhr.onload = resolve;
         xhr.onerror = reject;
         xhr.setRequestHeader("Content-type", "application/json");
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var json = JSON.parse(xhr.responseText);
             }
@@ -51,7 +51,7 @@ function getRequest(url) {
     xhr.open("Get", url, false);
     xhr.send(null);
 
-    return xhr.responseText
+    return xhr.responseText;
 }
 
 function generateForm() {
@@ -77,26 +77,26 @@ function generateForm() {
 
     var button = form.appendChild(document.createElement("button"));
     button.innerHTML = "Submit";
-    button.onclick = function () {
+    button.onclick = function() {
         postComment();
     };
 
     var list = form.appendChild(document.createElement("div"));
-    list.id = "comments-list"
+    list.id = "comments-list";
 }
 
 function renderComment(data) {
     var list = document.getElementById("comments-list");
 
     var comment = list.appendChild(document.createElement("div"));
-    comment.id = "comment-" + data.id
+    comment.id = "comment-" + data.id;
 
     comment.appendChild(document.createTextNode(data.text));
     comment.appendChild(document.createElement("br"));
 
     var up = comment.appendChild(document.createElement("button"));
     up.innerHTML = "Up";
-    up.onclick = function () {
+    up.onclick = function() {
         incrementScore(data.id);
     };
 
@@ -106,7 +106,7 @@ function renderComment(data) {
 
     var down = comment.appendChild(document.createElement("button"));
     down.innerHTML = "Down";
-    down.onclick = function () {
+    down.onclick = function() {
         decrementScore(data.id);
     };
 

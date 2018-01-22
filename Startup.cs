@@ -26,7 +26,7 @@ namespace Comments
 //                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
 //            );
 
-			services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
+            services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info
