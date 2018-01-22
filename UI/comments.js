@@ -23,11 +23,23 @@ function postComment() {
 function incrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/up", null);
     document.getElementById("comment-score-" + id).innerHTML++;
+    disableIncrementScore(id);
 }
 
 function decrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/down", null);
     document.getElementById("comment-score-" + id).innerHTML--;
+    disableDecrementScore(id);
+}
+
+function disableIncrementScore(id) {
+    document.getElementById("comment-up-" + id).disabled = true;
+    document.getElementById("comment-down-" + id).disabled = false;
+}
+
+function disableDecrementScore(id) {
+    document.getElementById("comment-up-" + id).disabled = false;
+    document.getElementById("comment-down-" + id).disabled = true;
 }
 
 function postRequest(url, data) {
@@ -37,7 +49,7 @@ function postRequest(url, data) {
         xhr.onload = resolve;
         xhr.onerror = reject;
         xhr.setRequestHeader("Content-type", "application/json");
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 var json = JSON.parse(xhr.responseText);
             }
@@ -77,7 +89,7 @@ function generateForm() {
 
     var button = form.appendChild(document.createElement("button"));
     button.innerHTML = "Submit";
-    button.onclick = function() {
+    button.onclick = function () {
         postComment();
     };
 
@@ -95,8 +107,9 @@ function renderComment(data) {
     comment.appendChild(document.createElement("br"));
 
     var up = comment.appendChild(document.createElement("button"));
-    up.innerHTML = "Up";
-    up.onclick = function() {
+    up.id = "comment-up-" + data.id;
+    up.innerHTML = "&#9650;";
+    up.onclick = function () {
         incrementScore(data.id);
     };
 
@@ -105,8 +118,9 @@ function renderComment(data) {
     score.id = "comment-score-" + data.id;
 
     var down = comment.appendChild(document.createElement("button"));
-    down.innerHTML = "Down";
-    down.onclick = function() {
+    down.id = "comment-down-" + data.id;
+    down.innerHTML = "&#9660;";
+    down.onclick = function () {
         decrementScore(data.id);
     };
 
