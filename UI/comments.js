@@ -2,6 +2,7 @@ const baseUrl = "http://localhost:5000/api/";
 
 generateForm();
 renderComments();
+loadCss();
 
 function postComment() {
     var comment = {
@@ -64,6 +65,15 @@ function getRequest(url) {
     xhr.send(null);
 
     return xhr.responseText;
+}
+
+function loadCss() {
+    var head = document.getElementsByTagName('head')[0];
+    var link = head.appendChild(document.createElement('link'));
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'stylesheet.css';
+    link.media = 'all';
 }
 
 function generateForm() {
