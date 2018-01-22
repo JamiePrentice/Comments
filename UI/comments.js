@@ -1,7 +1,6 @@
 const baseUrl = "http://localhost:5000/api/";
 
 generateForm();
-
 renderComments();
 
 function postComment() {
@@ -9,8 +8,8 @@ function postComment() {
         "text": document.getElementById("comments-comment").value,
         "username": document.getElementById("comments-name").value,
         "ipAddress": "string",
-        "domain": "string",
-        "url": "string",
+        "domain": window.location.hostname.replace("www.", ""),
+        "url": window.location.pathname,
         "parentCommentId": 0,
     };
 
@@ -18,7 +17,6 @@ function postComment() {
         clearComments();
         renderComments();
     });
-
 }
 
 function incrementScore(id) {
@@ -125,6 +123,5 @@ function renderComments() {
 }
 
 function clearComments() {
-    var list = document.getElementById("comments-list");
-    list.innerHTML = "";
+    document.getElementById("comments-list").innerHTML = "";
 }
