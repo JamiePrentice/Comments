@@ -91,8 +91,7 @@ function generateForm() {
     comment.id = "comments-comment";
     comment.name = "comment";
     comment.type = "text";
-    comment.rows = "4";
-    comment.cols = "50";
+    comment.maxLength = 5000;
 
     form.appendChild(document.createElement("br"));
 
@@ -121,8 +120,9 @@ function renderComment(data) {
     var comment = list.appendChild(document.createElement("div"));
     comment.id = "comment-" + data.id;
 
-    comment.appendChild(document.createTextNode(data.text));
-    comment.appendChild(document.createElement("br"));
+    var text = comment.appendChild(document.createElement("p"));
+    text.id = "comments-text";
+    text.innerHTML = data.text;
 
     var up = comment.appendChild(document.createElement("button"));
     up.id = "comment-up-" + data.id;

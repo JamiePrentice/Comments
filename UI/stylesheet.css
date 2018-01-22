@@ -1,14 +1,17 @@
-html{
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
 #comments{
     width: 50%;
 }
 
 #comments textarea{
-    width: 99%;
+    width: 99.3%;
+    resize: vertical;
+    min-height: 5em;
 }
 
 #comments-submitDiv{
     text-align: right;
+}
+
+#comments-text{
+    text-align: justify;
 }
