@@ -1,8 +1,8 @@
 const baseUrl = "http://localhost:49737/api/";
 
+loadCss();
 generateForm();
 renderComments();
-loadCss();
 
 function postComment() {
     var commentValue = document.getElementById("comments-comment").value;
@@ -100,9 +100,9 @@ function generateForm() {
 
     submitDiv.appendChild(document.createTextNode("Name: "));
     var name = submitDiv.appendChild(document.createElement("input"));
+    name.type = "text";
     name.id = "comments-name";
     name.name = "name";
-    name.type = "text";
 
     var button = submitDiv.appendChild(document.createElement("button"));
     button.innerHTML = "Post";
@@ -168,25 +168,24 @@ function clearInput() {
 function timeSince(date) {
     var seconds = Math.floor((new Date() - new Date(date)) / 1000);
     var interval = Math.floor(seconds / 31536000);
-
-    if (interval > 1) {
-        return interval + " years";
+    if (interval >= 1) {
+        return interval + "y";
     }
     interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months";
+    if (interval >= 1) {
+        return interval + "mo";
     }
     interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days";
+    if (interval >= 1) {
+        return interval + "d";
     }
     interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours";
+    if (interval >= 1) {
+        return interval + "h";
     }
     interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes";
+    if (interval >= 1) {
+        return interval + "m";
     }
-    return Math.floor(seconds) + " seconds";
+    return Math.floor(seconds) + "s";
 }
