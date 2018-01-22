@@ -14,6 +14,7 @@ function postComment() {
     };
 
     postRequest(baseUrl + "comments", comment).then(() => {
+        clearInput();
         clearComments();
         renderComments();
     });
@@ -124,4 +125,9 @@ function renderComments() {
 
 function clearComments() {
     document.getElementById("comments-list").innerHTML = "";
+}
+
+function clearInput() {
+    document.getElementById("comments-comment").value = "";
+    document.getElementById("comments-name").value = "";
 }
