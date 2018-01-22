@@ -98,7 +98,7 @@ function generateForm() {
     name.type = "text";
 
     var button = form.appendChild(document.createElement("button"));
-    button.innerHTML = "Submit";
+    button.innerHTML = "Post";
     button.onclick = function () {
         postComment();
     };
