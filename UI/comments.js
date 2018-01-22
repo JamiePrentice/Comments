@@ -8,7 +8,7 @@ function postComment() {
     var commentValue = document.getElementById("comments-comment").value;
     var usernameValue = document.getElementById("comments-name").value;
 
-    if (commentValue != "") {
+    if (commentValue !== "") {
         var comment = {
             "text": commentValue,
             "username": usernameValue,
@@ -58,7 +58,7 @@ function postRequest(url, data) {
         xhr.setRequestHeader("Content-type", "application/json");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
-                var json = JSON.parse(xhr.responseText);
+                JSON.parse(xhr.responseText);
             }
         };
         xhr.send(JSON.stringify(data));
