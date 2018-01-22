@@ -1,0 +1,14 @@
+html{
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+#comments{
+    width: 50%;
+}
+
+#comments textarea{
+    width: 99%;
+}
+
+#comments-submitDiv{
+    text-align: right;
+}
