@@ -1,8 +1,10 @@
+const baseUrl = "http://localhost:5000/api/";
+
 generateForm();
+
 renderComments();
 
 function postComment() {
-    clearComments();
     var comment = {
         "text": document.getElementById("comments-comment").value,
         "username": document.getElementById("comments-name").value,
@@ -12,28 +14,35 @@ function postComment() {
         "parentCommentId": 0,
     };
 
-    postRequest("http://localhost:5000/api/comments", comment);
-    renderComments();
+    postRequest(baseUrl + "comments", comment).then(() => {
+        clearComments();
+        renderComments();
+    });
+
 }
 
 function incrementScore(id) {
-    postRequest("http://localhost:5000/api/comments/" + id + "/up", null);
+    postRequest(baseUrl + "comments/" + id + "/up", null);
 }
 
 function decrementScore(id) {
-    postRequest("http://localhost:5000/api/comments/" + id + "/down", null);
+    postRequest(baseUrl + "comments/" + id + "/down", null);
 }
 
 function postRequest(url, data) {
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-type", "application/json");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            var json = JSON.parse(xhr.responseText);
-        }
-    };
-    xhr.send(JSON.stringify(data));
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+        xhr.onload = resolve;
+        xhr.onerror = reject;
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var json = JSON.parse(xhr.responseText);
+            }
+        };
+        xhr.send(JSON.stringify(data));
+    });
 }
 
 function getRequest(url) {
@@ -76,11 +85,10 @@ function generateForm() {
 }
 
 function renderComment(data) {
-    console.log(data);
     var list = document.getElementById("comments-list");
 
     var comment = list.appendChild(document.createElement("div"));
-    comment.class = "comment"
+    comment.id = "comment-" + data.id
 
     comment.appendChild(document.createTextNode(data.text));
     comment.appendChild(document.createElement("br"));
@@ -90,6 +98,10 @@ function renderComment(data) {
     up.onclick = function () {
         incrementScore(data.id);
     };
+
+    var score = comment.appendChild(document.createElement("div"));
+    score.innerHTML = data.score;
+    score.id = "comment-score-" + data.id;
 
     var down = comment.appendChild(document.createElement("button"));
     down.innerHTML = "Down";
@@ -103,7 +115,7 @@ function renderComment(data) {
 }
 
 function renderComments() {
-    var comments = getRequest("http://localhost:5000/api/comments");
+    var comments = getRequest(baseUrl + "comments");
     comments = JSON.parse(comments);
     comments.forEach(comment => {
         renderComment(comment);
