@@ -29,24 +29,17 @@ function postComment() {
 
 function incrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/up", null);
-    document.getElementById("comment-score-" + id).innerHTML++;
-    disableIncrementScore(id);
+    var comment = document.getElementById("comment-" + id)
+    var up = document.getElementById("comment-up-" + id);
+    var score = document.getElementById("comment-score-" + id);
+    score.innerHTML++;
 }
 
 function decrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/down", null);
-    document.getElementById("comment-score-" + id).innerHTML--;
-    disableDecrementScore(id);
-}
-
-function disableIncrementScore(id) {
-    document.getElementById("comment-up-" + id).disabled = true;
-    document.getElementById("comment-down-" + id).disabled = false;
-}
-
-function disableDecrementScore(id) {
-    document.getElementById("comment-up-" + id).disabled = false;
-    document.getElementById("comment-down-" + id).disabled = true;
+    var down = document.getElementById("comment-down-" + id);
+    var score = document.getElementById("comment-score-" + id);
+    score.innerHTML--;
 }
 
 function postRequest(url, data) {
@@ -119,6 +112,8 @@ function renderComment(data) {
 
     var comment = list.appendChild(document.createElement("div"));
     comment.id = "comment-" + data.id;
+    comment.setAttribute('up', false);
+    comment.setAttribute('down', false);
 
     var text = comment.appendChild(document.createElement("p"));
     text.id = "comments-text";
