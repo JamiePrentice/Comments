@@ -16,7 +16,6 @@
 
         public string Text { get; set; }
         public string Username { get; set; }
-        public string IPAddress { get; set; }
         public string Domain { get; set; }
         public string Url { get; set; }
         public int? ParentCommentId { get; set; }
@@ -35,7 +34,6 @@
         {
             Text = text;
             Username = username;
-            IPAddress = ipAddress;
             Domain = domain;
             Url = url;
             Score = score;
