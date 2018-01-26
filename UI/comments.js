@@ -1,8 +1,4 @@
-
-import miligram from './node_modules/milligram/dist/milligram.css';
-import css from './stylesheet.css';
-
-const baseUrl = "http://localhost:49737/api/";
+const baseUrl = "http://localhost:5000/api/";
 
 loadCss();
 generateForm();
@@ -75,7 +71,7 @@ function loadCss() {
     var link = head.appendChild(document.createElement('link'));
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = 'stylesheet.css';
+    link.href = './dist/output.css';
     link.media = 'all';
 }
 

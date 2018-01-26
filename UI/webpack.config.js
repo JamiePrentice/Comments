@@ -5,7 +5,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   watch: true,
-  entry: './comments.js',
+  entry: {
+    A: './comments.js',
+    B: './style.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './output.js'
