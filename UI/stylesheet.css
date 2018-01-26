@@ -1,17 +1,28 @@
-#comments{
+#comments {
     width: 50%;
 }
 
-#comments textarea{
+#comments textarea {
     width: 99.3%;
     resize: vertical;
     min-height: 5em;
 }
 
-#comments-submitDiv{
+#comments-submitDiv {
     text-align: right;
 }
 
-#comments-text{
-    text-align: justify;
+#comment-controls {
+    display: inline-block;
+    min-width: 25px;
+    background-color: green;
+}
+
+#comments-text {
+    display: inline-block;
+    background-color: red;
+}
+
+#comments-list{
+    display: inline;
 }
