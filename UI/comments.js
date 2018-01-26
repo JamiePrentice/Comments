@@ -115,31 +115,37 @@ function renderComment(data) {
     comment.setAttribute('up', false);
     comment.setAttribute('down', false);
 
-    var text = comment.appendChild(document.createElement("p"));
-    text.id = "comments-text";
-    text.innerHTML = data.text;
+    var controls = comment.appendChild(document.createElement("div"));
+    controls.id = "comment-controls";
 
-    var up = comment.appendChild(document.createElement("button"));
+    var up = controls.appendChild(document.createElement("button"));
     up.id = "comment-up-" + data.id;
     up.innerHTML = "&#9650;";
     up.onclick = function () {
         incrementScore(data.id);
     };
 
-    var score = comment.appendChild(document.createElement("div"));
+    var score = controls.appendChild(document.createElement("div"));
     score.innerHTML = data.score;
     score.id = "comment-score-" + data.id;
 
-    var down = comment.appendChild(document.createElement("button"));
+    var down = controls.appendChild(document.createElement("button"));
     down.id = "comment-down-" + data.id;
     down.innerHTML = "&#9660;";
     down.onclick = function () {
         decrementScore(data.id);
     };
 
-    comment.appendChild(document.createTextNode(data.username + " @ " + timeSince(data.createdTime)));
+    var text = comment.appendChild(document.createElement("div"));
+    text.id = "comments-text";
+    text.innerHTML = data.text;
 
-    comment.appendChild(document.createElement("hr"));
+    var footer = comment.appendChild(document.createElement("div"));
+    footer.id = "comments-footer";
+
+    footer.appendChild(document.createTextNode(data.username + " @ " + timeSince(data.createdTime)));
+
+    footer.appendChild(document.createElement("hr"));
 }
 
 function renderComments() {
