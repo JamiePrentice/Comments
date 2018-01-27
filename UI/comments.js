@@ -94,7 +94,7 @@ function generateForm() {
 
     var label = row.appendChild(document.createElement("label"));
     label.innerHTML = "Name:";
-    
+
     var name = row.appendChild(document.createElement("input"));
     name.id = "brandname-name";
     name.type = "text";
@@ -108,48 +108,53 @@ function generateForm() {
     };
 
     var list = form.appendChild(document.createElement("div"));
-    list.id = "comments-list";
+    list.id = "brandname-comments-list";
 }
 
 function renderComment(data) {
-    var list = document.getElementById("comments-list");
+    var list = document.getElementById("brandname-comments-list");
 
     var comment = list.appendChild(document.createElement("div"));
     comment.id = "comment-" + data.id;
     comment.setAttribute('up', false);
     comment.setAttribute('down', false);
 
-    var controls = comment.appendChild(document.createElement("div"));
-    controls.id = "comment-controls";
+    var row = comment.appendChild(document.createElement("div"));
+    row.className = "row";
+
+    var controls = row.appendChild(document.createElement("div"));
+    controls.className = "column column-8 center";
 
     var up = controls.appendChild(document.createElement("button"));
     up.id = "comment-up-" + data.id;
+    up.className = "vote";
     up.innerHTML = "&#9650;";
     up.onclick = function () {
         incrementScore(data.id);
     };
 
     var score = controls.appendChild(document.createElement("div"));
-    score.innerHTML = data.score;
     score.id = "comment-score-" + data.id;
+    score.className = "score";
+    score.innerHTML = data.score;
 
     var down = controls.appendChild(document.createElement("button"));
     down.id = "comment-down-" + data.id;
+    down.className = "vote";
     down.innerHTML = "&#9660;";
     down.onclick = function () {
         decrementScore(data.id);
     };
 
-    var text = comment.appendChild(document.createElement("div"));
+    var text = row.appendChild(document.createElement("div"));
     text.id = "comments-text";
+    text.className = "column comment-text";
     text.innerHTML = data.text;
 
     var footer = comment.appendChild(document.createElement("div"));
-    footer.id = "comments-footer";
+    footer.className = "float-right";
 
-    footer.appendChild(document.createTextNode(data.username + " @ " + timeSince(data.createdTime)));
-
-    footer.appendChild(document.createElement("hr"));
+    footer.appendChild(document.createTextNode("by " + data.username + " - " + timeSince(data.createdTime) + " ago"));
 }
 
 function renderComments() {
@@ -161,7 +166,7 @@ function renderComments() {
 }
 
 function clearComments() {
-    document.getElementById("comments-list").innerHTML = "";
+    document.getElementById("brandname-comments-list").innerHTML = "";
 }
 
 function clearInput() {

@@ -4,6 +4,11 @@
     width: calc(100%);
 }
 
+.row .column.column-8 {
+    flex: 0 0 8%;
+    max-width: 8%
+}
+
 textarea {
     resize: vertical;
     margin-bottom: 0rem;
@@ -19,10 +24,43 @@ label {
     margin-top: 0.5rem;
 }
 
-html{
+label.score {
+    margin-right: 0rem;
+    margin-top: 0rem
+}
+
+.center {
+    text-align: center;
+}
+
+button.vote {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding: 0.8rem;
+    padding-top: 1rem;
+    height: 0rem;
+    letter-spacing: 0rem;
+    line-height: 0rem;
+    margin: auto;
+}
+
+.comment-text {
+    margin-top: 0.4rem;
+    border-radius: .4rem;
+    background: #F5F5F5;
+}
+
+.score {
+    margin-top: 0rem;
+    margin-bottom: -0.4rem;
+    text-align: center;
+    margin: auto;
+}
+
+html {
     width: 50%;
 }
 
-input[type="text"]{
+input[type="text"] {
     min-width: 25rem;
 }
