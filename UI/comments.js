@@ -146,10 +146,15 @@ function renderComment(data) {
     text.innerHTML = data.text;
 
     var footer = comment.appendChild(document.createElement("div"));
-    footer.id = "comment-footer";
-    footer.className = "float-right";
+    footer.className = "footer";
 
-    footer.appendChild(document.createTextNode("by " + data.username + " - " + timeSince(data.createdTime) + " ago"));
+    var links = footer.appendChild(document.createElement("div"));
+    links.className = "column column-offset-8 inline";
+    links.innerHTML = "Reply";
+
+    var author = footer.appendChild(document.createElement("div"));
+    author.className = "float-right inline";
+    author.innerHTML = "by " + data.username + " - " + timeSince(data.createdTime) + " ago";
 }
 
 function renderComments() {

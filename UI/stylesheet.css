@@ -9,6 +9,10 @@
     max-width: 8%
 }
 
+.column.column-offset-8{
+    margin-left: 8% !important;
+}
+
 textarea {
     resize: vertical;
     margin-bottom: 0rem;
@@ -65,4 +69,12 @@ html {
 
 input[type="text"] {
     min-width: 25rem;
+}
+
+.footer{
+    margin-bottom: 0.8rem;
+}
+
+.inline{
+    display: inline-block;
 }
