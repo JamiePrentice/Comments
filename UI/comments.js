@@ -5,8 +5,8 @@ generateForm();
 renderComments();
 
 function postComment() {
-    var commentValue = document.getElementById("comments-comment").value;
-    var usernameValue = document.getElementById("comments-name").value;
+    var commentValue = document.getElementById("brandname-comment").value;
+    var usernameValue = document.getElementById("brandname-name").value;
 
     if (commentValue !== "") {
         var comment = {
@@ -76,29 +76,33 @@ function loadCss() {
 }
 
 function generateForm() {
-    var form = document.getElementById("comments");
-    form.appendChild(document.createTextNode("Comment:"));
-    form.appendChild(document.createElement("br"));
+    var form = document.getElementById("brandname");
+
+    var comment_label = form.appendChild(document.createElement("label"));
+    comment_label.innerHTML = "Comment:";
 
     var comment = form.appendChild(document.createElement("textarea"));
-    comment.id = "comments-comment";
-    comment.name = "comment";
+    comment.id = "brandname-comment";
     comment.type = "text";
     comment.maxLength = 5000;
 
-    form.appendChild(document.createElement("br"));
+    var float_right = form.appendChild(document.createElement("div"));
+    float_right.className = "float-right";
 
-    var submitDiv = form.appendChild(document.createElement("div"));
-    submitDiv.id = "comments-submitDiv";
+    var row = float_right.appendChild(document.createElement("div"));
+    row.className = "row";
 
-    submitDiv.appendChild(document.createTextNode("Name: "));
-    var name = submitDiv.appendChild(document.createElement("input"));
+    var label = row.appendChild(document.createElement("label"));
+    label.innerHTML = "Name:";
+    
+    var name = row.appendChild(document.createElement("input"));
+    name.id = "brandname-name";
     name.type = "text";
-    name.id = "comments-name";
-    name.name = "name";
 
-    var button = submitDiv.appendChild(document.createElement("button"));
+    var button = row.appendChild(document.createElement("input"));
     button.innerHTML = "Post";
+    button.type = "submit";
+    button.className = "button";
     button.onclick = function () {
         postComment();
     };
@@ -161,8 +165,8 @@ function clearComments() {
 }
 
 function clearInput() {
-    document.getElementById("comments-comment").value = "";
-    document.getElementById("comments-name").value = "";
+    document.getElementById("brandname-comment").value = "";
+    document.getElementById("brandname-name").value = "";
 }
 
 
