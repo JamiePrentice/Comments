@@ -4,38 +4,6 @@ loadCss();
 generateForm();
 renderComments();
 
-function postComment() {
-    if (commentValue !== "") {
-        var comment = {
-            "text": document.getElementById("brandname-comment").value,
-            "username": document.getElementById("brandname-name").value,
-            "ipAddress": "string",
-            "domain": window.location.hostname.replace("www.", ""),
-            "url": window.location.pathname,
-            "parentCommentId": 0,
-        };
-
-        postRequest(baseUrl + "comments", comment).then(() => {
-            clearInput();
-            clearComments();
-            renderComments();
-        });
-    }
-
-}
-
-function incrementScore(id) {
-    postRequest(baseUrl + "comments/" + id + "/up", null);
-    var score = document.getElementById("comment-score-" + id);
-    score.innerHTML++;
-}
-
-function decrementScore(id) {
-    postRequest(baseUrl + "comments/" + id + "/down", null);
-    var score = document.getElementById("comment-score-" + id);
-    score.innerHTML--;
-}
-
 function postRequest(url, data) {
     return new Promise((resolve, reject) => {
         var xhr = new XMLHttpRequest();
@@ -148,13 +116,49 @@ function renderComment(data) {
     var footer = comment.appendChild(document.createElement("div"));
     footer.className = "footer";
 
-    var links = footer.appendChild(document.createElement("div"));
+    var links = footer.appendChild(document.createElement("a"));
     links.className = "column column-offset-8 inline";
     links.innerHTML = "Reply";
+    links.onclick = function () {
+        generateReplyInput(data.id);
+    };
 
     var author = footer.appendChild(document.createElement("div"));
     author.className = "float-right inline";
     author.innerHTML = "by " + data.username + " - " + timeSince(data.createdTime) + " ago";
+}
+
+function postComment() {
+    var commentValue = document.getElementById("brandname-comment").value;
+    
+    if (commentValue !== "") {
+        var comment = {
+            "text": commentValue,
+            "username": document.getElementById("brandname-name").value,
+            "ipAddress": "string",
+            "domain": window.location.hostname.replace("www.", ""),
+            "url": window.location.pathname,
+            "parentCommentId": 0,
+        };
+
+        postRequest(baseUrl + "comments", comment).then(() => {
+            clearInput();
+            clearComments();
+            renderComments();
+        });
+    }
+}
+
+function incrementScore(id) {
+    postRequest(baseUrl + "comments/" + id + "/up", null);
+    var score = document.getElementById("comment-score-" + id);
+    score.innerHTML++;
+}
+
+function decrementScore(id) {
+    postRequest(baseUrl + "comments/" + id + "/down", null);
+    var score = document.getElementById("comment-score-" + id);
+    score.innerHTML--;
 }
 
 function renderComments() {
@@ -174,6 +178,10 @@ function clearInput() {
     document.getElementById("brandname-name").value = "";
 }
 
+function generateReplyInput(id) {
+    var list = document.getElementById("comment-" + id);
+    alert("This will render a comment under comment-" + id);
+}
 
 function timeSince(date) {
     var seconds = Math.floor((new Date() - new Date(date)) / 1000);
