@@ -54,7 +54,8 @@ button.vote {
     margin-top: 0rem;
     margin-bottom: -0.4rem;
     text-align: center;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto; 
 }
 
 html {
