@@ -5,13 +5,10 @@ generateForm();
 renderComments();
 
 function postComment() {
-    var commentValue = document.getElementById("brandname-comment").value;
-    var usernameValue = document.getElementById("brandname-name").value;
-
     if (commentValue !== "") {
         var comment = {
-            "text": commentValue,
-            "username": usernameValue,
+            "text": document.getElementById("brandname-comment").value,
+            "username": document.getElementById("brandname-name").value,
             "ipAddress": "string",
             "domain": window.location.hostname.replace("www.", ""),
             "url": window.location.pathname,
@@ -29,15 +26,12 @@ function postComment() {
 
 function incrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/up", null);
-    var comment = document.getElementById("comment-" + id)
-    var up = document.getElementById("comment-up-" + id);
     var score = document.getElementById("comment-score-" + id);
     score.innerHTML++;
 }
 
 function decrementScore(id) {
     postRequest(baseUrl + "comments/" + id + "/down", null);
-    var down = document.getElementById("comment-down-" + id);
     var score = document.getElementById("comment-score-" + id);
     score.innerHTML--;
 }
@@ -152,6 +146,7 @@ function renderComment(data) {
     text.innerHTML = data.text;
 
     var footer = comment.appendChild(document.createElement("div"));
+    footer.id = "comment-footer";
     footer.className = "float-right";
 
     footer.appendChild(document.createTextNode("by " + data.username + " - " + timeSince(data.createdTime) + " ago"));
