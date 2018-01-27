@@ -100,7 +100,7 @@ function generateForm() {
     name.type = "text";
 
     var button = row.appendChild(document.createElement("input"));
-    button.innerHTML = "Post";
+    button.value = "Post";
     button.type = "submit";
     button.className = "button";
     button.onclick = function () {
@@ -147,7 +147,7 @@ function renderComment(data) {
     };
 
     var text = row.appendChild(document.createElement("div"));
-    text.id = "comments-text";
+    text.id = "comment-text";
     text.className = "column comment-text";
     text.innerHTML = data.text;
 

@@ -47,7 +47,8 @@ button.vote {
 .comment-text {
     margin-top: 0.4rem;
     border-radius: .4rem;
-    background: #F5F5F5;
+    text-align: justify;
+    background: #EDE7F6;
 }
 
 .score {
