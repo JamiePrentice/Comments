@@ -116,7 +116,7 @@ function renderComment(data) {
     footer.className = "footer";
 
     var links = footer.appendChild(document.createElement("a"));
-    links.className = "column column-offset-8 inline";
+    links.className = "column column-offset-7 inline";
     links.innerHTML = "Reply";
     links.onclick = function () {
         generateReplyInput(data.id);
@@ -171,7 +171,7 @@ function renderChild(data) {
     footer.className = "footer";
 
     var links = footer.appendChild(document.createElement("a"));
-    links.className = "column column-offset-8 inline";
+    links.className = "column column-offset-7 inline";
     links.innerHTML = "Reply";
     links.onclick = function () {
         generateReplyInput(data.id);
