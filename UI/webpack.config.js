@@ -11,12 +11,21 @@ module.exports = {
     filename: './output.js'
   },
   module: {
-    loaders: [
-        { test: /\.css$/, loader: ExtractTextPlugin.extract("css-loader") }
-    ]
-},
+    loaders: [{
+      test: /\.css$/,
+      loader: ExtractTextPlugin.extract("css-loader")
+    }]
+  },
   plugins: [
     new ExtractTextPlugin("./output.css"),
-    new UglifyJSPlugin(),
+    new UglifyJSPlugin({
+      uglifyOptions: {
+        ie8: false,
+        ecma: 8,
+        mangle: true,
+        compress: true,
+        warnings: false
+      }
+    })
   ]
 };
