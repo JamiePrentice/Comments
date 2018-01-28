@@ -129,10 +129,6 @@ function renderComment(data) {
 
 function renderChild(data) {
     var parent = document.getElementById("comment-" + data.parentCommentId);
-    if(parent == null){
-        renderComment(data);
-        return;
-    }
 
     var comment = parent.appendChild(document.createElement("div"));
     comment.id = "comment-" + data.id;
@@ -244,19 +240,26 @@ function renderComments() {
     var comments = getRequest(baseUrl + "comments");
     comments = JSON.parse(comments);
     comments.forEach(comment => {
-        if(comment.parentCommentId === 0){
+        if (comment.parentCommentId === 0) {
             renderComment(comment);
         }
     });
     renderChildren(comments);
 }
 
-function renderChildren(comments){
-    comments.forEach(comment => {
-        if(comment.parentCommentId !== 0){
-            renderChild(comment);
+function renderChildren(comments) {
+    var arrayLength = comments.length;
+
+    for (i = 0; i < arrayLength; i++) {
+        if (comments[i] && comments[i].parentCommentId !== 0) {
+            if (document.getElementById("comment-" + comments[i].parentCommentId) !== null) {
+                renderChild(comments[i]);
+            } else {
+                comments.push(comments[i]);
+                arrayLength++;
+            }
         }
-    });
+    };
 }
 
 function clearComments() {
@@ -269,8 +272,8 @@ function clearInput() {
 }
 
 function generateReplyInput(id) {
-    
-    if(document.getElementById("comment-" + id + "-parentid") !== null){
+
+    if (document.getElementById("comment-" + id + "-parentid") !== null) {
         return;
     }
 
