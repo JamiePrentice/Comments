@@ -11,9 +11,9 @@ namespace Comments.Queries
         public IEnumerable<Comment> QueryAll(Context context)
         {
             return context.Comments.AsNoTracking()
-                .OrderByDescending(q => q.Score)
+                .OrderBy(q => q.ParentCommentId)
+                .ThenByDescending(q => q.Score)
                 .ThenBy(q => q.CreatedTime);
-            ;
         }
 
         public Comment QueryById(Context context, int id)
