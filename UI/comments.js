@@ -112,6 +112,7 @@ function renderComment(data) {
     text.innerHTML = data.text;
 
     var footer = comment.appendChild(document.createElement("div"));
+    footer.id = "comment-footer-" + data.id;
     footer.className = "footer";
 
     var links = footer.appendChild(document.createElement("a"));
@@ -171,6 +172,7 @@ function renderChild(data) {
     text.innerHTML = data.text;
 
     var footer = comment.appendChild(document.createElement("div"));
+    footer.id = "comment-footer-" + data.id;
     footer.className = "footer";
 
     var links = footer.appendChild(document.createElement("a"));
@@ -269,11 +271,12 @@ function clearInput() {
 }
 
 function generateReplyInput(id) {
-    var parentComment = document.getElementById("comment-" + id);
-
+    
     if(document.getElementById("comment-" + id + "-parentid") !== null){
         return;
     }
+
+    var parentComment = document.getElementById("comment-footer-" + id);
 
     var parentid = parentComment.appendChild(document.createElement("div"));
     parentid.id = "comment-" + id + "-parentid";
