@@ -83,7 +83,7 @@ function renderComment(data) {
     row.className = "row";
 
     var controls = row.appendChild(document.createElement("div"));
-    controls.className = "column column-8 center";
+    controls.className = "column column-7 center";
 
     var up = controls.appendChild(document.createElement("button"));
     up.id = "comment-up-" + data.id;
@@ -143,7 +143,7 @@ function renderChild(data) {
     row.className = "row";
 
     var controls = row.appendChild(document.createElement("div"));
-    controls.className = "column column-8 center";
+    controls.className = "column column-7 center";
 
     var up = controls.appendChild(document.createElement("button"));
     up.id = "comment-up-" + data.id;

@@ -4,13 +4,13 @@
     width: calc(100%);
 }
 
-.row .column.column-8 {
-    flex: 0 0 8%;
-    max-width: 8%
+.row .column.column-7 {
+    flex: 0 0 7%;
+    max-width: 7%
 }
 
-.column.column-offset-8{
-    margin-left: 8% !important;
+.column.column-offset-7{
+    margin-left: 7% !important;
 }
 
 textarea {
