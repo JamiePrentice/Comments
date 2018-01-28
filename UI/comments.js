@@ -126,6 +126,65 @@ function renderComment(data) {
     author.innerHTML = "by " + data.username + " - " + timeSince(data.createdTime) + " ago";
 }
 
+function renderChild(data) {
+    var parent = document.getElementById("comment-" + data.parentCommentId);
+    console.log(parent);
+    if(parent == null){
+        renderComment(data);
+        return;
+    }
+
+    var comment = parent.appendChild(document.createElement("div"));
+    comment.id = "comment-" + data.id;
+    comment.className = "reply";
+
+    var row = comment.appendChild(document.createElement("div"));
+    row.className = "row";
+
+    var controls = row.appendChild(document.createElement("div"));
+    controls.className = "column column-8 center";
+
+    var up = controls.appendChild(document.createElement("button"));
+    up.id = "comment-up-" + data.id;
+    up.className = "vote";
+    up.innerHTML = "&#9650;";
+    up.onclick = function () {
+        incrementScore(data.id);
+    };
+
+    var score = controls.appendChild(document.createElement("div"));
+    score.id = "comment-score-" + data.id;
+    score.className = "score";
+    score.innerHTML = data.score;
+
+    var down = controls.appendChild(document.createElement("button"));
+    down.id = "comment-down-" + data.id;
+    down.className = "vote";
+    down.innerHTML = "&#9660;";
+    down.onclick = function () {
+        decrementScore(data.id);
+    };
+
+    var text = row.appendChild(document.createElement("div"));
+    text.id = "comment-text";
+    text.className = "column comment-text";
+    text.innerHTML = data.text;
+
+    var footer = comment.appendChild(document.createElement("div"));
+    footer.className = "footer";
+
+    var links = footer.appendChild(document.createElement("a"));
+    links.className = "column column-offset-8 inline";
+    links.innerHTML = "Reply";
+    links.onclick = function () {
+        generateReplyInput(data.id);
+    };
+
+    var author = footer.appendChild(document.createElement("div"));
+    author.className = "float-right inline";
+    author.innerHTML = "by " + data.username + " - " + timeSince(data.createdTime) + " ago";
+}
+
 function postComment() {
     var commentValue = document.getElementById("brandname-comment").value;
 
@@ -184,7 +243,19 @@ function renderComments() {
     var comments = getRequest(baseUrl + "comments");
     comments = JSON.parse(comments);
     comments.forEach(comment => {
-        renderComment(comment);
+        if(comment.parentCommentId === 0){
+            renderComment(comment);
+        }
+    });
+    renderChildren(comments);
+}
+
+function renderChildren(comments){
+    comments.forEach(comment => {
+        if(comment.parentCommentId !== 0){
+            console.log(comment);
+            renderChild(comment);
+        }
     });
 }
 
