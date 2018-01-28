@@ -271,6 +271,10 @@ function clearInput() {
 function generateReplyInput(id) {
     var parentComment = document.getElementById("comment-" + id);
 
+    if(document.getElementById("comment-" + id + "-parentid") !== null){
+        return;
+    }
+
     var parentid = parentComment.appendChild(document.createElement("div"));
     parentid.id = "comment-" + id + "-parentid";
     parentid.value = id;
