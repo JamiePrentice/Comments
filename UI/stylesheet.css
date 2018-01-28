@@ -78,3 +78,8 @@ input[type="text"] {
 .inline{
     display: inline-block;
 }
+
+.reply{
+    width: 92%;
+    float: right;
+}

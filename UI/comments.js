@@ -78,8 +78,6 @@ function renderComment(data) {
 
     var comment = list.appendChild(document.createElement("div"));
     comment.id = "comment-" + data.id;
-    comment.setAttribute('up', false);
-    comment.setAttribute('down', false);
 
     var row = comment.appendChild(document.createElement("div"));
     row.className = "row";
@@ -130,7 +128,7 @@ function renderComment(data) {
 
 function postComment() {
     var commentValue = document.getElementById("brandname-comment").value;
-    
+
     if (commentValue !== "") {
         var comment = {
             "text": commentValue,
@@ -139,6 +137,27 @@ function postComment() {
             "domain": window.location.hostname.replace("www.", ""),
             "url": window.location.pathname,
             "parentCommentId": 0,
+        };
+
+        postRequest(baseUrl + "comments", comment).then(() => {
+            clearInput();
+            clearComments();
+            renderComments();
+        });
+    }
+}
+
+function postReply(id) {
+    var commentValue = document.getElementById("comment-" + id + "-reply").value;
+
+    if (commentValue !== "") {
+        var comment = {
+            "text": commentValue,
+            "username": document.getElementById("comment-" + id + "-name").value,
+            "ipAddress": "string",
+            "domain": window.location.hostname.replace("www.", ""),
+            "url": window.location.pathname,
+            "parentCommentId": document.getElementById("comment-" + id + "-parentid").value,
         };
 
         postRequest(baseUrl + "comments", comment).then(() => {
@@ -179,8 +198,40 @@ function clearInput() {
 }
 
 function generateReplyInput(id) {
-    var list = document.getElementById("comment-" + id);
-    alert("This will render a comment under comment-" + id);
+    var parentComment = document.getElementById("comment-" + id);
+
+    var parentid = parentComment.appendChild(document.createElement("div"));
+    parentid.id = "comment-" + id + "-parentid";
+    parentid.value = id;
+
+    var reply = parentComment.appendChild(document.createElement("div"));
+    reply.className = "reply";
+
+    var comment = reply.appendChild(document.createElement("textarea"));
+    comment.id = "comment-" + id + "-reply";
+    comment.type = "text";
+    comment.maxLength = 5000;
+
+    var float_right = reply.appendChild(document.createElement("div"));
+    float_right.className = "float-right";
+
+    var row = float_right.appendChild(document.createElement("div"));
+    row.className = "row";
+
+    var label = row.appendChild(document.createElement("label"));
+    label.innerHTML = "Name:";
+
+    var name = row.appendChild(document.createElement("input"));
+    name.id = "comment-" + id + "-name";
+    name.type = "text";
+
+    var button = row.appendChild(document.createElement("input"));
+    button.value = "Reply";
+    button.type = "submit";
+    button.className = "button";
+    button.onclick = function () {
+        postReply(id);
+    };
 }
 
 function timeSince(date) {
