@@ -129,7 +129,6 @@ function renderComment(data) {
 
 function renderChild(data) {
     var parent = document.getElementById("comment-" + data.parentCommentId);
-    console.log(parent);
     if(parent == null){
         renderComment(data);
         return;
@@ -255,7 +254,6 @@ function renderComments() {
 function renderChildren(comments){
     comments.forEach(comment => {
         if(comment.parentCommentId !== 0){
-            console.log(comment);
             renderChild(comment);
         }
     });
