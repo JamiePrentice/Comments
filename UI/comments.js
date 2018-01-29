@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5000/api/";
+const baseUrl = "http://localhost:49737/api/";
 
 loadCss();
 generateForm();
@@ -90,7 +90,7 @@ function renderComment(data) {
     row.className = "row";
 
     var controls = row.appendChild(document.createElement("div"));
-    controls.className = "column column-7 center";
+    controls.className = "column column-4 center";
 
     var up = controls.appendChild(document.createElement("button"));
     up.id = "comment-up-" + data.id;
@@ -123,7 +123,7 @@ function renderComment(data) {
     footer.className = "footer";
 
     var links = footer.appendChild(document.createElement("a"));
-    links.className = "column column-offset-7 inline";
+    links.className = "column column-offset-4 inline";
     links.innerHTML = "Reply";
     links.onclick = function () {
         generateReplyInput(data.id);

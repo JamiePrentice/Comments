@@ -4,14 +4,18 @@
     width: calc(100%);
 }
 
-.row .column.column-7 {
-    flex: 0 0 7%;
-    max-width: 7%
+.row .column.column-4 {
+    flex: 0 0 4%;
+    width: 4rem;
+    min-width: 4rem;
+    margin-left: 0rem;
+    padding-left: 0rem;
 }
 
-.column.column-offset-7{
-    margin-left: 7% !important;
+.column.column-offset-4{
+    margin-left: 4rem;
 }
+
 
 textarea {
     resize: vertical;
@@ -80,6 +84,6 @@ input[type="text"] {
 }
 
 .reply{
-    width: 93%;
+    width: 95%;
     float: right;
 }
