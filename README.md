@@ -48,6 +48,7 @@ We're using [milligram.css](https://github.com/milligram/milligram) to make bran
 
 ##### General
 
+- [ ] Voting - 1 up / 1 down per reload.
 - [ ] Come up with a good name. Replace all the instances of brand name with it.
 - [ ] Domain + Deploy.
       - [ ] Deployed with versioning and integrity.
