@@ -74,65 +74,17 @@ function generateForm() {
 }
 
 function renderComment(data) {
-    var list = document.getElementById("brandname-comments-list");
+    if(data.parentCommentId !== 0){
+        var parent = document.getElementById("comment-" + data.parentCommentId);
 
-    var comment = list.appendChild(document.createElement("div"));
-    comment.id = "comment-" + data.id;
-
-    var row = comment.appendChild(document.createElement("div"));
-    row.className = "row";
-
-    var controls = row.appendChild(document.createElement("div"));
-    controls.className = "column column-7 center";
-
-    var up = controls.appendChild(document.createElement("button"));
-    up.id = "comment-up-" + data.id;
-    up.className = "vote";
-    up.innerHTML = "&#9650;";
-    up.onclick = function () {
-        incrementScore(data.id);
-    };
-
-    var score = controls.appendChild(document.createElement("div"));
-    score.id = "comment-score-" + data.id;
-    score.className = "score";
-    score.innerHTML = data.score;
-
-    var down = controls.appendChild(document.createElement("button"));
-    down.id = "comment-down-" + data.id;
-    down.className = "vote";
-    down.innerHTML = "&#9660;";
-    down.onclick = function () {
-        decrementScore(data.id);
-    };
-
-    var text = row.appendChild(document.createElement("div"));
-    text.id = "comment-text";
-    text.className = "column comment-text";
-    text.innerHTML = data.text;
-
-    var footer = comment.appendChild(document.createElement("div"));
-    footer.id = "comment-footer-" + data.id;
-    footer.className = "footer";
-
-    var links = footer.appendChild(document.createElement("a"));
-    links.className = "column column-offset-7 inline";
-    links.innerHTML = "Reply";
-    links.onclick = function () {
-        generateReplyInput(data.id);
-    };
-
-    var author = footer.appendChild(document.createElement("div"));
-    author.className = "float-right inline";
-    author.innerHTML = "by " + data.username + " - " + timeSince(data.createdTime) + " ago";
-}
-
-function renderChild(data) {
-    var parent = document.getElementById("comment-" + data.parentCommentId);
-
-    var comment = parent.appendChild(document.createElement("div"));
-    comment.id = "comment-" + data.id;
-    comment.className = "reply";
+        var comment = parent.appendChild(document.createElement("div"));
+        comment.id = "comment-" + data.id;
+        comment.className = "reply";
+    }else{
+        var list = document.getElementById("brandname-comments-list");
+        var comment = list.appendChild(document.createElement("div"));
+        comment.id = "comment-" + data.id;
+    }
 
     var row = comment.appendChild(document.createElement("div"));
     row.className = "row";
@@ -253,7 +205,7 @@ function renderChildren(comments) {
     for (i = 0; i < arrayLength; i++) {
         if (comments[i] && comments[i].parentCommentId !== 0) {
             if (document.getElementById("comment-" + comments[i].parentCommentId) !== null) {
-                renderChild(comments[i]);
+                renderComment(comments[i]);
             } else {
                 comments.push(comments[i]);
                 arrayLength++;
