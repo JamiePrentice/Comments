@@ -7,19 +7,20 @@
 .row .column.column-4 {
     flex: 0 0 4%;
     width: 4rem;
+    max-width: 4rem;
     min-width: 4rem;
     margin-left: 0rem;
     padding-left: 0rem;
 }
 
-.column.column-offset-4{
+.column.column-offset-4 {
     margin-left: 4rem;
 }
-
 
 textarea {
     resize: vertical;
     margin-bottom: 0rem;
+    height: 8rem;
 }
 
 input.button {
@@ -64,7 +65,7 @@ button.vote {
     margin-bottom: -0.4rem;
     text-align: center;
     margin-left: auto;
-    margin-right: auto; 
+    margin-right: auto;
 }
 
 html {
@@ -75,15 +76,15 @@ input[type="text"] {
     min-width: 25rem;
 }
 
-.footer{
+.footer {
     margin-bottom: 0.8rem;
 }
 
-.inline{
+.inline {
     display: inline-block;
 }
 
-.reply{
-    width: 95%;
+.reply {
+    width: 95.5%;
     float: right;
 }

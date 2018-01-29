@@ -74,13 +74,13 @@ function generateForm() {
 }
 
 function renderComment(data) {
-    if(data.parentCommentId !== 0){
+    if (data.parentCommentId !== 0) {
         var parent = document.getElementById("comment-" + data.parentCommentId);
 
         var comment = parent.appendChild(document.createElement("div"));
         comment.id = "comment-" + data.id;
         comment.className = "reply";
-    }else{
+    } else {
         var list = document.getElementById("brandname-comments-list");
         var comment = list.appendChild(document.createElement("div"));
         comment.id = "comment-" + data.id;
