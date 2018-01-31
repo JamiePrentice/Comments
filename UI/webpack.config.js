@@ -1,31 +1,33 @@
-const webpack = require('webpack');
-const path = require('path');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-  watch: true,
-  entry: './webpack-targets.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: './output.js'
-  },
-  module: {
-    loaders: [{
-      test: /\.css$/,
-      loader: ExtractTextPlugin.extract("css-loader")
-    }]
-  },
-  plugins: [
-    new ExtractTextPlugin("./output.css"),
-    new UglifyJSPlugin({
-      uglifyOptions: {
-        ie8: false,
-        ecma: 8,
-        mangle: true,
-        compress: true,
-        warnings: false
-      }
-    })
-  ]
+    watch: true,
+    entry: "./webpack-targets.js",
+    output: {
+        path: path.resolve(__dirname, "dist"),
+        filename: "./output.js"
+    },
+    module: {
+        loaders: [
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract("css-loader")
+            }
+        ]
+    },
+    plugins: [
+        new ExtractTextPlugin("./output.css"),
+        new UglifyJSPlugin({
+            uglifyOptions: {
+                ie8: false,
+                ecma: 8,
+                mangle: true,
+                compress: true,
+                warnings: false
+            }
+        })
+    ]
 };

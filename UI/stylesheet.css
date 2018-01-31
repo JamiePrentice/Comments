@@ -6,21 +6,19 @@
 
 .row .column.column-4 {
     flex: 0 0 4%;
-    width: 4rem;
+    margin-left: 0rem;
     max-width: 4rem;
     min-width: 4rem;
-    margin-left: 0rem;
     padding-left: 0rem;
+    width: 4rem;
 }
 
-.column.column-offset-4 {
-    margin-left: 4rem;
-}
+.column.column-offset-4 { margin-left: 4rem; }
 
 textarea {
-    resize: vertical;
-    margin-bottom: 0rem;
     height: 8rem;
+    margin-bottom: 0rem;
+    resize: vertical;
 }
 
 input.button {
@@ -38,53 +36,43 @@ label.score {
     margin-top: 0rem
 }
 
-.center {
-    text-align: center;
-}
+.center { text-align: center; }
 
 button.vote {
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    padding: 0.8rem;
-    padding-top: 1rem;
     height: 0rem;
     letter-spacing: 0rem;
     line-height: 0rem;
     margin: auto;
+    margin-bottom: 0rem;
+    margin-top: 0rem;
+    padding: 0.8rem;
+    padding-top: 1rem;
 }
 
 .comment-text {
-    margin-top: 0.4rem;
-    border-radius: .4rem;
-    text-align: justify;
     background: #EDE7F6;
+    border-radius: .4rem;
+    margin-top: 0.4rem;
+    text-align: justify;
 }
 
 .score {
-    margin-top: 0rem;
     margin-bottom: -0.4rem;
-    text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 0rem;
+    text-align: center;
 }
 
-html {
-    width: 50%;
-}
+html { width: 50%; }
 
-input[type="text"] {
-    min-width: 25rem;
-}
+input[type="text"] { min-width: 25rem; }
 
-.footer {
-    margin-bottom: 0.8rem;
-}
+.footer { margin-bottom: 0.8rem; }
 
-.inline {
-    display: inline-block;
-}
+.inline { display: inline-block; }
 
 .reply {
-    width: 95.5%;
     float: right;
+    width: 95.5%;
 }

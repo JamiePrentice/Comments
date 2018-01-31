@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:49737/api/";
+const baseUrl = "http://localhost:5000/api/";
 
 loadCss();
 generateForm();
@@ -11,7 +11,7 @@ function postRequest(url, data) {
         xhr.onload = resolve;
         xhr.onerror = reject;
         xhr.setRequestHeader("Content-type", "application/json");
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 JSON.parse(xhr.responseText);
             }
@@ -29,12 +29,12 @@ function getRequest(url) {
 }
 
 function loadCss() {
-    var head = document.getElementsByTagName('head')[0];
-    var link = head.appendChild(document.createElement('link'));
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = './dist/output.css';
-    link.media = 'all';
+    var head = document.getElementsByTagName("head")[0];
+    var link = head.appendChild(document.createElement("link"));
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = "./dist/output.css";
+    link.media = "all";
 }
 
 function generateForm() {
@@ -65,7 +65,7 @@ function generateForm() {
     button.value = "Post";
     button.type = "submit";
     button.className = "button";
-    button.onclick = function () {
+    button.onclick = function() {
         postComment();
     };
 
@@ -96,7 +96,7 @@ function renderComment(data) {
     up.id = "comment-up-" + data.id;
     up.className = "vote";
     up.innerHTML = "&#9650;";
-    up.onclick = function () {
+    up.onclick = function() {
         incrementScore(data.id);
     };
 
@@ -109,7 +109,7 @@ function renderComment(data) {
     down.id = "comment-down-" + data.id;
     down.className = "vote";
     down.innerHTML = "&#9660;";
-    down.onclick = function () {
+    down.onclick = function() {
         decrementScore(data.id);
     };
 
@@ -125,7 +125,7 @@ function renderComment(data) {
     var links = footer.appendChild(document.createElement("a"));
     links.className = "column column-offset-4 inline";
     links.innerHTML = "Reply";
-    links.onclick = function () {
+    links.onclick = function() {
         generateReplyInput(data.id);
     };
 
@@ -260,7 +260,7 @@ function generateReplyInput(id) {
     button.value = "Reply";
     button.type = "submit";
     button.className = "button";
-    button.onclick = function () {
+    button.onclick = function() {
         postReply(id);
     };
 }
