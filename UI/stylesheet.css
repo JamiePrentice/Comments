@@ -1,23 +1,25 @@
 .row {
     flex-direction: row;
-    margin-left: 0rem;
+    margin-left: 0;
     width: calc(100%);
 }
 
 .row .column.column-4 {
     flex: 0 0 4%;
-    margin-left: 0rem;
+    margin-left: 0;
     max-width: 4rem;
     min-width: 4rem;
-    padding-left: 0rem;
+    padding-left: 0;
     width: 4rem;
 }
 
-.column.column-offset-4 { margin-left: 4rem; }
+.column.column-offset-4 {
+    margin-left: 4rem;
+}
 
 textarea {
     height: 8rem;
-    margin-bottom: 0rem;
+    margin-bottom: 0;
     resize: vertical;
 }
 
@@ -32,21 +34,18 @@ label {
 }
 
 label.score {
-    margin-right: 0rem;
-    margin-top: 0rem
+    margin-right: 0;
+    margin-top: 0
 }
 
 .center { text-align: center; }
 
 button.vote {
-    height: 0rem;
-    letter-spacing: 0rem;
-    line-height: 0rem;
-    margin: auto;
-    margin-bottom: 0rem;
-    margin-top: 0rem;
-    padding: 0.8rem;
-    padding-top: 1rem;
+    height: 0;
+    letter-spacing: 0;
+    line-height: 0;
+    margin: 0 auto;
+    padding: 1rem 0.8rem 0.8rem;
 }
 
 .comment-text {
@@ -57,16 +56,15 @@ button.vote {
 }
 
 .score {
-    margin-bottom: -0.4rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0rem;
+    margin: 0 auto -0.4rem;
     text-align: center;
 }
 
 html { width: 50%; }
 
-input[type="text"] { min-width: 25rem; }
+input[type="text"] {
+    min-width: 25rem;
+}
 
 .footer { margin-bottom: 0.8rem; }
 
@@ -75,4 +73,5 @@ input[type="text"] { min-width: 25rem; }
 .reply {
     float: right;
     width: 95.5%;
+
 }
