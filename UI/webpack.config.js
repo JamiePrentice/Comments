@@ -31,7 +31,7 @@ module.exports = {
                 ecma: 8,
                 mangle: true,
                 compress: true,
-                warnings: false,
+                warnings: true,
             }
         })
     ]
