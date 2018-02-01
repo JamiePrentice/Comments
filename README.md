@@ -2,7 +2,7 @@
 
 ### About
 
-A tiny (17.98 KB) comments framework that can be used on any webpage. 
+A tiny (17.44 KB) comments framework that can be used on any webpage. 
 
 
 
@@ -63,8 +63,6 @@ We're using [milligram.css](https://github.com/milligram/milligram) to make bran
 
 - [ ] Only load the CSS that we need.
 - [ ] Reduce duplication in the JS.
-- [ ] Remove unnecessary classes in the JS.
-- [ ] Get mangling working in the JS.
 
 ##### Performance
 
