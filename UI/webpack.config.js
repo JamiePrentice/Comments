@@ -1,4 +1,3 @@
-const webpack = require("webpack");
 const path = require("path");
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -11,10 +10,16 @@ module.exports = {
         filename: "./output.js"
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.css$/,
+                // use: ['css-loader'],
                 loader: ExtractTextPlugin.extract("css-loader")
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
             }
         ]
     },
@@ -26,7 +31,7 @@ module.exports = {
                 ecma: 8,
                 mangle: true,
                 compress: true,
-                warnings: false
+                warnings: false,
             }
         })
     ]
