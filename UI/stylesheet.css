@@ -38,7 +38,9 @@ label.score {
     margin-top: 0
 }
 
-.center { text-align: center; }
+.center {
+    text-align: center;
+}
 
 button.vote {
     height: 0;
@@ -60,18 +62,34 @@ button.vote {
     text-align: center;
 }
 
-html { width: 50%; }
+html {
+    width: 50%;
+}
 
 input[type="text"] {
     min-width: 25rem;
 }
 
-.footer { margin-bottom: 0.8rem; }
+.footer {
+    margin-bottom: 0.8rem;
+}
 
-.inline { display: inline-block; }
+.inline {
+    display: inline-block;
+}
 
 .reply {
     float: right;
     width: 95%;
+}
 
+.wrap {
+    position: relative;
+}
+
+.wrap span {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1.8rem;
+    color: lightgray;
 }

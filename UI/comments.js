@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5000/api/";
+const baseUrl = "http://localhost:49737/api/";
 
 loadCss();
 generateForm();
@@ -11,7 +11,7 @@ function postRequest(url, data) {
         xhr.onload = resolve;
         xhr.onerror = reject;
         xhr.setRequestHeader("Content-type", "application/json");
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 JSON.parse(xhr.responseText);
             }
@@ -43,10 +43,18 @@ function generateForm() {
     let comment_label = form.appendChild(document.createElement("label"));
     comment_label.innerHTML = "Comment:";
 
-    let comment = form.appendChild(document.createElement("textarea"));
+    let wrap = form.appendChild(document.createElement("div"));
+    wrap.className = "wrap";
+
+    let comment = wrap.appendChild(document.createElement("textarea"));
     comment.id = "brandname-comment";
     comment.type = "text";
     comment.maxLength = 5000;
+    comment.onkeypress = function () {
+        getRemainingCharacters(comment.value, comment.maxLength, counter)
+    };
+
+    let counter = wrap.appendChild(document.createElement("span"));
 
     let float_right = form.appendChild(document.createElement("div"));
     float_right.className = "float-right";
@@ -65,7 +73,7 @@ function generateForm() {
     button.value = "Post";
     button.type = "submit";
     button.className = "button";
-    button.onclick = function() {
+    button.onclick = function () {
         postComment();
     };
 
@@ -97,7 +105,7 @@ function renderComment(data) {
     up.id = "comment-up-" + data.id;
     up.className = "vote";
     up.innerHTML = "&#9650;";
-    up.onclick = function() {
+    up.onclick = function () {
         incrementScore(data.id);
     };
 
@@ -110,7 +118,7 @@ function renderComment(data) {
     down.id = "comment-down-" + data.id;
     down.className = "vote";
     down.innerHTML = "&#9660;";
-    down.onclick = function() {
+    down.onclick = function () {
         decrementScore(data.id);
     };
 
@@ -126,7 +134,7 @@ function renderComment(data) {
     let links = footer.appendChild(document.createElement("a"));
     links.className = "column column-offset-4 inline";
     links.innerHTML = "Reply";
-    links.onclick = function() {
+    links.onclick = function () {
         generateReplyInput(data.id);
     };
 
@@ -239,10 +247,18 @@ function generateReplyInput(id) {
     let reply = parentComment.appendChild(document.createElement("div"));
     reply.className = "reply";
 
-    let comment = reply.appendChild(document.createElement("textarea"));
-    comment.id = "comment-" + id + "-reply";
+    let wrap = reply.appendChild(document.createElement("div"));
+    wrap.className = "wrap";
+
+    let comment = wrap.appendChild(document.createElement("textarea"));
+    comment.id = "brandname-comment";
     comment.type = "text";
     comment.maxLength = 5000;
+    comment.onkeypress = function () {
+        getRemainingCharacters(comment.value, comment.maxLength, counter)
+    };
+
+    let counter = wrap.appendChild(document.createElement("span"));
 
     let float_right = reply.appendChild(document.createElement("div"));
     float_right.className = "float-right";
@@ -261,9 +277,13 @@ function generateReplyInput(id) {
     button.value = "Reply";
     button.type = "submit";
     button.className = "button";
-    button.onclick = function() {
+    button.onclick = function () {
         postReply(id);
     };
+}
+
+function getRemainingCharacters(text, max, counter) {
+    counter.innerHTML = max - text.length;
 }
 
 function timeSince(date) {

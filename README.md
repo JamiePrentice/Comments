@@ -2,7 +2,7 @@
 
 ### About
 
-A tiny (11.84 KB) comments framework that can be used on any webpage. 
+A tiny (12.39 KB) comments framework that can be used on any webpage. 
 
 
 
