@@ -1,6 +1,8 @@
 const path = require("path");
+const glob = require('glob');
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const PurifyCSSPlugin = require('purifycss-webpack');
 
 module.exports = {
     watch: true,
@@ -13,7 +15,6 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                // use: ['css-loader'],
                 loader: ExtractTextPlugin.extract("css-loader")
             },
             {
@@ -33,6 +34,11 @@ module.exports = {
                 compress: true,
                 warnings: true,
             }
+        }),
+        new PurifyCSSPlugin({
+            // Give paths to parse for rules. These should be absolute!
+            paths: glob.sync(path.join(__dirname, 'goal.html')),
+            minimize: true
         })
     ]
 };
