@@ -251,7 +251,7 @@ function generateReplyInput(id) {
     wrap.className = "wrap";
 
     let comment = wrap.appendChild(document.createElement("textarea"));
-    comment.id = "brandname-comment";
+    comment.id = "comment-" + id + "-reply";
     comment.type = "text";
     comment.maxLength = 5000;
     comment.onkeypress = function () {
