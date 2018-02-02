@@ -80,7 +80,7 @@ input[type="text"] {
 
 .reply {
     float: right;
-    width: 95%;
+    width: calc(100% - 4rem)
 }
 
 .wrap {
