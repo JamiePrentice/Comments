@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:49737/api/";
+const baseUrl = "http://localhost:5000/api/";
 
 loadCss();
 generateForm();

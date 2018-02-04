@@ -93,3 +93,10 @@ input[type="text"] {
     right: 1.8rem;
     color: lightgray;
 }
+
+input[type=submit]:focus,
+input[type=submit]:hover {
+    background-color: #7B1FA2;
+    border-color: #7B1FA2;
+}
+
