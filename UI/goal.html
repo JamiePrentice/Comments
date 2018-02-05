@@ -6,40 +6,33 @@
 </head>
 
 <body>
+    <!-- START -->
     <div id="brandname">
-        <!-- START -->
         <label>Comment:</label>
         <div class="wrap">
-            <textarea></textarea>
-            <span>5</span>
+            <textarea id="brandname-comment" maxlength="5000"></textarea>
+            <span>4990</span>
         </div>
         <div class="float-right">
             <div class="row">
-
                 <label>Name:</label>
-                <input type="text">
-                <input type="submit" class="button">
+                <input id="brandname-name" type="text">
+                <input type="submit" value="Post" class="button">
             </div>
         </div>
-
-        <div id="comments-list">
-            <div id="comment-1" up="false" down="false">
+        <div id="brandname-comments-list">
+            <div id="comment-1">
                 <div class="row">
                     <div class="column column-4 center">
-                        <button class="vote" id="comment-up-1">&#9650;</button>
-                        <div class="score" id="comment-score-1">0</div>
-                        <button class="vote" id="comment-down-1">&#9660;</button>
+                        <button id="comment-up-1" class="vote">▲</button>
+                        <div id="comment-score-1" class="score">0</div>
+                        <button id="comment-down-1" class="vote">▼</button>
                     </div>
-                    <div class="column comment-text">
-                        The quick brown fox ran over the road.
-                    </div>
+                    <div id="comment-text" class="column comment-text">Comment One</div>
                 </div>
-
-                <div class="footer">
-                    <a class="column column-offset-4 inline">Reply</a>
-                    <div class="float-right inline">
-                        by Jamie - 57m ago
-                    </div>
+                <div id="comment-footer-1" class="footer">
+                    <a class="column column-offset-4">Reply</a>
+                    <div class="float-right">by Name One - 6s ago</div>
                 </div>
                 <div id="comment-2" class="reply">
                     <div class="row">
@@ -48,20 +41,17 @@
                             <div id="comment-score-2" class="score">0</div>
                             <button id="comment-down-2" class="vote">▼</button>
                         </div>
-                        <div id="comment-text" class="column comment-text">Gavin</div>
+                        <div id="comment-text" class="column comment-text">Reply One</div>
                     </div>
                     <div id="comment-footer-2" class="footer">
-                        <a class="column column-offset-4 inline">Reply</a>
-                        <div class="float-right inline">by Test2 - 1m ago</div>
+                        <a class="column column-offset-4">Reply</a>
+                        <div class="float-right">by Reply One - 0s ago</div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
-
     <!-- END -->
-    </div>
 </body>
 
 </html>
