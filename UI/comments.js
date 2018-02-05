@@ -122,7 +122,6 @@ function renderComment(data) {
     };
 
     let text = row.appendChild(document.createElement("div"));
-    text.id = "comment-text";
     text.className = "column comment-text";
     text.innerHTML = data.text;
 
