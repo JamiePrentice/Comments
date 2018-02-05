@@ -4,28 +4,28 @@ loadCss();
 generateForm();
 renderComments();
 
-function postRequest(url, data) {
-    return new Promise((resolve, reject) => {
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", url, true);
-        xhr.onload = resolve;
-        xhr.onerror = reject;
-        xhr.setRequestHeader("Content-type", "application/json");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                JSON.parse(xhr.responseText);
-            }
+function sendRequest (method, url, data) {
+    return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            resolve(xhr.response);
         };
-        xhr.send(JSON.stringify(data));
+        xhr.onerror = function () {
+            reject({
+                status: this.status,
+                statusText: xhr.statusText
+            });
+        };
+        if(data != null){
+            xhr.open("POST", url, true);
+            xhr.setRequestHeader("Content-type", "application/json");
+            xhr.send(JSON.stringify(data));
+        }else{
+            xhr.open(method, url);
+            xhr.send();
+        }
+
     });
-}
-
-function getRequest(url) {
-    let xhr = new XMLHttpRequest();
-    xhr.open("Get", url, false);
-    xhr.send(null);
-
-    return xhr.responseText;
 }
 
 function loadCss() {
@@ -34,7 +34,6 @@ function loadCss() {
     link.rel = "stylesheet";
     link.type = "text/css";
     link.href = "./dist/output.css";
-    link.media = "all";
 }
 
 function generateForm() {
@@ -156,7 +155,7 @@ function postComment() {
             "parentCommentId": 0,
         };
 
-        postRequest(baseUrl + "comments", comment).then(() => {
+        sendRequest("POST", baseUrl + "comments", comment).then(() => {
             clearInput();
             clearComments();
             renderComments();
@@ -177,7 +176,7 @@ function postReply(id) {
             "parentCommentId": document.getElementById("comment-" + id + "-parentid").value,
         };
 
-        postRequest(baseUrl + "comments", comment).then(() => {
+        sendRequest("POST", baseUrl + "comments", comment).then(() => {
             clearInput();
             clearComments();
             renderComments();
@@ -186,26 +185,28 @@ function postReply(id) {
 }
 
 function incrementScore(id) {
-    postRequest(baseUrl + "comments/" + id + "/up", null);
+    sendRequest("POST", baseUrl + "comments/" + id + "/up", null);
     let score = document.getElementById("comment-score-" + id);
     score.innerHTML++;
 }
 
 function decrementScore(id) {
-    postRequest(baseUrl + "comments/" + id + "/down", null);
+    sendRequest("POST", baseUrl + "comments/" + id + "/down", null);
     let score = document.getElementById("comment-score-" + id);
     score.innerHTML--;
 }
 
 function renderComments() {
-    let comments = getRequest(baseUrl + "comments");
-    comments = JSON.parse(comments);
-    comments.forEach(comment => {
-        if (comment.parentCommentId === 0) {
-            renderComment(comment)
-        }
-    });
-    renderChildren(comments);
+    let comments = sendRequest("GET", baseUrl + "comments", null);
+    comments.then(function(comments){
+        comments = JSON.parse(comments);
+        comments.forEach(comment => {
+            if (comment.parentCommentId === 0) {
+                renderComment(comment)
+            }
+        });
+        renderChildren(comments);
+    })
 }
 
 function renderChildren(comments) {
