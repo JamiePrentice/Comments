@@ -2,7 +2,7 @@
 
 ### About
 
-A tiny (12.16 KB) comments framework that can be dropped on to any webpage. 
+A tiny (12.26 KB) comments framework that can be dropped on to any webpage. 
 
 
 TL:DR;
