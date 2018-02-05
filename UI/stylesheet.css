@@ -5,7 +5,7 @@
 .row {
     flex-direction: row;
     margin-left: 0;
-    width: calc(100%);
+    width: 100%;
 }
 
 .row .column.column-4 {
@@ -14,7 +14,6 @@
     max-width: 4rem;
     min-width: 4rem;
     padding-left: 0;
-    width: 4rem;
 }
 
 .column.column-offset-4 {
@@ -66,20 +65,12 @@ button.vote {
     text-align: center;
 }
 
-html {
-    width: 50%;
-}
-
 input[type="text"] {
     min-width: 25rem;
 }
 
 .footer {
     margin-bottom: 0.8rem;
-}
-
-.inline {
-    display: inline-block;
 }
 
 .reply {

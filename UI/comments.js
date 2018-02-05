@@ -131,14 +131,14 @@ function renderComment(data) {
     footer.className = "footer";
 
     let links = footer.appendChild(document.createElement("a"));
-    links.className = "column column-offset-4 inline";
+    links.className = "column column-offset-4";
     links.innerHTML = "Reply";
     links.onclick = function () {
         generateReplyInput(data.id);
     };
 
     let author = footer.appendChild(document.createElement("div"));
-    author.className = "float-right inline";
+    author.className = "float-right";
     author.innerHTML = "by " + data.username + " - " + timeSince(data.createdTime) + " ago";
 }
 
@@ -152,14 +152,10 @@ function postComment() {
             "ipAddress": "string",
             "domain": window.location.hostname.replace("www.", ""),
             "url": window.location.pathname,
-            "parentCommentId": 0,
+            "parentCommentId": 0
         };
 
-        sendRequest("POST", baseUrl + "comments", comment).then(() => {
-            clearInput();
-            clearComments();
-            renderComments();
-        });
+        requestComment(comment);
     }
 }
 
@@ -173,15 +169,19 @@ function postReply(id) {
             "ipAddress": "string",
             "domain": window.location.hostname.replace("www.", ""),
             "url": window.location.pathname,
-            "parentCommentId": document.getElementById("comment-" + id + "-parentid").value,
+            "parentCommentId": document.getElementById("comment-" + id + "-parentid").value
         };
 
-        sendRequest("POST", baseUrl + "comments", comment).then(() => {
-            clearInput();
-            clearComments();
-            renderComments();
-        });
+        requestComment(comment);
     }
+}
+
+function requestComment(comment){
+    sendRequest("POST", baseUrl + "comments", comment).then(() => {
+        clearInput();
+        clearComments();
+        renderComments();
+    });
 }
 
 function incrementScore(id) {
