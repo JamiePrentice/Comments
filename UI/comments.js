@@ -1,4 +1,5 @@
 const baseUrl = "http://localhost:5000/api/";
+const cssUrl = "./dist/output.css";
 
 loadCss();
 generateForm();
@@ -6,7 +7,7 @@ renderComments();
 
 function sendRequest (method, url, data) {
     return new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.onload = function () {
             resolve(xhr.response);
         };
@@ -33,7 +34,7 @@ function loadCss() {
     let link = head.appendChild(document.createElement("link"));
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = "./dist/output.css";
+    link.href = cssUrl;
 }
 
 function generateForm() {
@@ -178,7 +179,6 @@ function postReply(id) {
 function requestComment(comment){
     sendRequest("POST", baseUrl + "comments", comment).then(() => {
         clearInput();
-        clearComments();
         renderComments();
     });
 }
@@ -223,13 +223,10 @@ function renderChildren(comments) {
     }
 }
 
-function clearComments() {
-    document.getElementById("brandname-comments-list").innerHTML = "";
-}
-
 function clearInput() {
     document.getElementById("brandname-comment").value = "";
     document.getElementById("brandname-name").value = "";
+    document.getElementById("brandname-comments-list").innerHTML = "";
 }
 
 function generateReplyInput(id) {
