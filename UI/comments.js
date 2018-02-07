@@ -5,23 +5,17 @@ loadCss();
 generateForm();
 renderComments();
 
-function sendRequest (method, url, data) {
-    return new Promise(function (resolve, reject) {
+function sendRequest(method, url, data) {
+    return new Promise((resolve, reject) => {
         let xhr = new XMLHttpRequest();
-        xhr.onload = function () {
-            resolve(xhr.response);
-        };
-        xhr.onerror = function () {
-            reject({
-                status: this.status,
-                statusText: xhr.statusText
-            });
-        };
-        if(data != null){
+        xhr.onload = () => resolve(xhr.response);
+        xhr.onerror = () => reject(xhr.statusText);
+
+        if (data != null) {
             xhr.open("POST", url, true);
             xhr.setRequestHeader("Content-type", "application/json");
             xhr.send(JSON.stringify(data));
-        }else{
+        } else {
             xhr.open(method, url);
             xhr.send();
         }
@@ -176,7 +170,7 @@ function postReply(id) {
     }
 }
 
-function requestComment(comment){
+function requestComment(comment) {
     sendRequest("POST", baseUrl + "comments", comment).then(() => {
         clearInput();
         renderComments();
@@ -197,7 +191,7 @@ function decrementScore(id) {
 
 function renderComments() {
     let comments = sendRequest("GET", baseUrl + "comments", null);
-    comments.then(function(comments){
+    comments.then(function (comments) {
         comments = JSON.parse(comments);
         comments.forEach(comment => {
             if (comment.parentCommentId === 0) {
