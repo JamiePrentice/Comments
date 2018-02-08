@@ -106,6 +106,7 @@ function renderComment(data) {
     let score = controls.appendChild(document.createElement("div"));
     score.id = "comment-score-" + data.id;
     score.className = "score";
+    score.setAttribute("voted", "none");
     score.innerHTML = data.score;
 
     let down = controls.appendChild(document.createElement("button"));
@@ -178,15 +179,45 @@ function requestComment(comment) {
 }
 
 function incrementScore(id) {
-    sendRequest("POST", baseUrl + "comments/" + id + "/up", null);
     let score = document.getElementById("comment-score-" + id);
-    score.innerHTML++;
+    let votedValue = score.getAttribute("voted");
+
+    if (votedValue === "none") {
+        score.setAttribute("voted", "up");
+        voteUp(score, id);
+    } else if (votedValue === "up") {
+        score.setAttribute("voted", "none");
+        voteDown(score, );
+    } else if (votedValue === "down") {
+        score.setAttribute("voted", "none");
+        voteUp(score, id);
+    }
 }
 
 function decrementScore(id) {
-    sendRequest("POST", baseUrl + "comments/" + id + "/down", null);
     let score = document.getElementById("comment-score-" + id);
+    let votedValue = score.getAttribute("voted");
+
+    if (votedValue === "none") {
+        score.setAttribute("voted", "down");
+        sendvoteDown(score, id);
+    } else if (votedValue === "down") {
+        score.setAttribute("voted", "none");
+        voteUp(score, id);
+    } else if (votedValue === "up") {
+        score.setAttribute("voted", "none");
+        voteDown(score, id);
+    }
+}
+
+function voteDown(score, id) {
+    sendRequest("POST", baseUrl + "comments/" + id + "/down", null);
     score.innerHTML--;
+}
+
+function voteUp(score, id) {
+    sendRequest("POST", baseUrl + "comments/" + id + "/up", null);
+    score.innerHTML++;
 }
 
 function renderComments() {
