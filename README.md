@@ -2,7 +2,7 @@
 
 ### About
 
-A tiny (12.24 KB) comments framework that can be dropped on to any webpage. 
+A tiny (12.3 KB) comments framework that can be dropped on to any webpage. 
 
 
 TL:DR;
@@ -117,7 +117,6 @@ a {
 
 ##### General
 
-- [ ] Voting - 1 up / 1 down per reload.
 - [ ] Come up with a good name. Replace all the instances of brand name with it.
 - [ ] Domain + Deploy.
       - [ ] Deployed with versioning and integrity.
