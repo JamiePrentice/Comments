@@ -1,8 +1,5 @@
-const baseUrl = "http://localhost:5000/api";
+const baseUrl = "http://localhost:49737/api/";
 const cssUrl = "./dist/output.css";
-console.log(window.location.hostname.replace("www.", ""));
-console.log(getUrl())
-console.log(baseUrl)
 
 loadCss();
 generateForm();
@@ -24,16 +21,6 @@ function sendRequest(method, url, data) {
         }
 
     });
-}
-
-function getDomain(){
-    return window.location.hostname.replace("www.", "");
-}
-
-function getUrl(){
-    let url = window.location.pathname.replace(/\//g, '-');
-    url = url.substring(0, url.indexOf('.'));
-    return url;
 }
 
 function loadCss() {
@@ -234,7 +221,7 @@ function voteUp(score, id) {
 }
 
 function renderComments() {
-    let comments = sendRequest("GET", baseUrl + "comments", null);
+    let comments = sendRequest("GET", baseUrl + "comments" + "/" + getDomain() + "/" + getUrl(), null);
     comments.then(function (comments) {
         comments = JSON.parse(comments);
         comments.forEach(comment => {
@@ -315,6 +302,18 @@ function generateReplyInput(id) {
     button.onclick = function () {
         postReply(id);
     };
+}
+
+
+function getDomain() {
+    var domain = window.location.hostname.replace("www.", "");
+    return domain == "" ? "localhost" : domain;
+}
+
+function getUrl() {
+    let url = window.location.pathname.substring(1).replace(/\//g, '-');
+    url = url.substring(0, url.indexOf('.'));
+    return url;
 }
 
 function getRemainingCharacters(text, max, counter) {
