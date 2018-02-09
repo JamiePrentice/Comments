@@ -144,7 +144,6 @@ function postComment() {
         let comment = {
             "text": commentValue,
             "username": document.getElementById("brandname-name").value,
-            "ipAddress": "string",
             "domain": getDomain(),
             "url": getUrl(),
             "parentCommentId": 0
@@ -161,7 +160,6 @@ function postReply(id) {
         let comment = {
             "text": commentValue,
             "username": document.getElementById("comment-" + id + "-name").value,
-            "ipAddress": "string",
             "domain": getDomain(),
             "url": getUrl(),
             "parentCommentId": document.getElementById("comment-" + id + "-parentid").value
