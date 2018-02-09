@@ -2,7 +2,7 @@
 
 ### About
 
-A tiny (12.3 KB) comments framework that can be dropped on to any webpage. 
+A tiny (12.7 KB) comments framework that can be dropped on to any webpage. 
 
 
 TL:DR;
@@ -11,7 +11,7 @@ TL:DR;
 - No Ads.
 - No tracking.
 - No bloatware.
-- No logins.
+- No logins with facebook, google... no logins at all.
   - Get straight to ~~trolling~~ civilised discussion!
 - All Vanilla Javascript. 
   - No jQuery or other dependancies! 
@@ -26,7 +26,7 @@ Add the two lines of code to where you'd like comments on your website.
 
 ```html
 <div id="brandname"></div>
-<script src="https://linktoacnd/brandname.js" type="text/javascript" integrity="abc123"></script>
+<script src="https://linktoacnd/brandname_latest.js" type="text/javascript" integrity="abc123"></script>
 ```
 
 Something common like a footer would be best. 
@@ -45,7 +45,7 @@ Add a .css file and import it after the javascript file.
 
 ```html
 <div id="brandname"></div>
-<script src="https://linktoacnd/brandname.js" type="text/javascript" integrity="abc123"></script>
+<script src="https://linktoacnd/brandname_latest.js" type="text/javascript" integrity="abc123"></script>
 <link rel="stylesheet" type="text/css" href="https://example.com/customestyles.css" />
 ```
 
@@ -54,7 +54,7 @@ Add a .css file and import it after the javascript file.
 If you don't want to host a file, include the css in style tags after the javascript file.
 ```html
 <div id="brandname"></div>
-<script src="https://linktoacnd/brandname.js" type="text/javascript" integrity="abc123"></script>
+<script src="https://linktoacnd/brandname_latest.js" type="text/javascript" integrity="abc123"></script>
 <style>
   ... Add CSS from below here ...
 </style?

@@ -36,6 +36,12 @@ function generateForm() {
 
     let comment_label = form.appendChild(document.createElement("label"));
     comment_label.innerHTML = "Comment:";
+    comment_label.className = "header";
+
+    let brand = form.appendChild(document.createElement("a"));
+    brand.setAttribute('href',"https://github.com/JamiePrentice/Comments");
+    brand.innerHTML = "Powered by: Brandname";
+    brand.className = "brand";
 
     let wrap = form.appendChild(document.createElement("div"));
     wrap.className = "wrap";
