@@ -181,13 +181,12 @@ function requestComment(comment) {
 function incrementScore(id) {
     let score = document.getElementById("comment-score-" + id);
     let votedValue = score.getAttribute("voted");
-
     if (votedValue === "none") {
         score.setAttribute("voted", "up");
         voteUp(score, id);
     } else if (votedValue === "up") {
         score.setAttribute("voted", "none");
-        voteDown(score, );
+        voteDown(score, id);
     } else if (votedValue === "down") {
         score.setAttribute("voted", "none");
         voteUp(score, id);
@@ -200,7 +199,7 @@ function decrementScore(id) {
 
     if (votedValue === "none") {
         score.setAttribute("voted", "down");
-        sendvoteDown(score, id);
+        voteDown(score, id);
     } else if (votedValue === "down") {
         score.setAttribute("voted", "none");
         voteUp(score, id);
