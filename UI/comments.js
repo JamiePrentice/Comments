@@ -1,5 +1,8 @@
-const baseUrl = "http://localhost:5000/api/";
+const baseUrl = "http://localhost:5000/api";
 const cssUrl = "./dist/output.css";
+console.log(window.location.hostname.replace("www.", ""));
+console.log(getUrl())
+console.log(baseUrl)
 
 loadCss();
 generateForm();
@@ -21,6 +24,16 @@ function sendRequest(method, url, data) {
         }
 
     });
+}
+
+function getDomain(){
+    return window.location.hostname.replace("www.", "");
+}
+
+function getUrl(){
+    let url = window.location.pathname.replace(/\//g, '-');
+    url = url.substring(0, url.indexOf('.'));
+    return url;
 }
 
 function loadCss() {
@@ -145,8 +158,8 @@ function postComment() {
             "text": commentValue,
             "username": document.getElementById("brandname-name").value,
             "ipAddress": "string",
-            "domain": window.location.hostname.replace("www.", ""),
-            "url": window.location.pathname,
+            "domain": getDomain(),
+            "url": getUrl(),
             "parentCommentId": 0
         };
 
@@ -162,8 +175,8 @@ function postReply(id) {
             "text": commentValue,
             "username": document.getElementById("comment-" + id + "-name").value,
             "ipAddress": "string",
-            "domain": window.location.hostname.replace("www.", ""),
-            "url": window.location.pathname,
+            "domain": getDomain(),
+            "url": getUrl(),
             "parentCommentId": document.getElementById("comment-" + id + "-parentid").value
         };
 
