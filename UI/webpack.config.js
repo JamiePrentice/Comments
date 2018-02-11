@@ -10,7 +10,7 @@ module.exports = {
     entry: "./webpack-targets.js",
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: "./output.js"
+        filename: "./brandname.js"
     },
     module: {
         rules: [{
@@ -25,7 +25,7 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin("./output.css"),
+        new ExtractTextPlugin("./brandname.css"),
         new UglifyJSPlugin({
             uglifyOptions: {
                 ie8: false,
