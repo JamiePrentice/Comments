@@ -3,6 +3,7 @@ const glob = require('glob');
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const PurifyCSSPlugin = require('purifycss-webpack');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
     watch: true,
@@ -12,8 +13,7 @@ module.exports = {
         filename: "./output.js"
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract("css-loader")
             },
@@ -39,6 +39,9 @@ module.exports = {
             // Give paths to parse for rules. These should be absolute!
             paths: glob.sync(path.join(__dirname, 'goal.html')),
             minimize: true
+        }),
+        new CompressionPlugin({
+            algorithm: 'gzip'
         })
     ]
 };
