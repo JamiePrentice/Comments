@@ -1,4 +1,5 @@
-﻿using Comments.Contexts;
+﻿using System;
+using Comments.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -21,22 +22,31 @@ namespace Comments
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
             services.AddMvc();
-            //            services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
-            //                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
-            //            );
-
+            services.AddCors(); 
             
-            services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
-            services.AddCors();
-            services.AddSwaggerGen(c =>
+            if (env != null && env.ToLower() == "development")
             {
-                c.SwaggerDoc("v1", new Info
+                services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
+                
+                services.AddSwaggerGen(c =>
                 {
-                    Version = "v1",
-                    Title = "Comments API"
+                    c.SwaggerDoc("v1", new Info
+                    {
+                        Version = "v1",
+                        Title = "Comments API"
+                    });
                 });
-            });
+            }
+            else
+            {
+                services.AddEntityFrameworkNpgsql().AddDbContext<Context>(opt =>
+                    opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
+                );
+            }
+
+ 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
