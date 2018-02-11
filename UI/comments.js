@@ -1,5 +1,5 @@
-const baseUrl = "http://localhost:49737/api/";
-const cssUrl = "./dist/output.css";
+const baseUrl = "http://localhost:5000/api/";
+const cssUrl = "https://brandname.ams3.digitaloceanspaces.com/brandname_latest.css";
 
 loadCss();
 generateForm();
