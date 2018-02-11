@@ -24,7 +24,7 @@ TL:DR;
 ---
 
 
-### Usage
+###Usage
 
 Add the two lines of code to where you'd like comments on your website.
 
@@ -41,7 +41,7 @@ We'll work out where we are and what comments to load based on the URL. Magic.
 ---
 
 
-### Design
+###Design
 
 We're using [milligram.css](https://github.com/milligram/milligram) to make brandname look great. We love it, but if you're not a big fan of the purple here's how to change the look:
 
@@ -117,7 +117,7 @@ a {
 ---
 
 
-### ToDo
+###ToDo
 
 ##### General
 
