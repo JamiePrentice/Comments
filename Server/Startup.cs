@@ -26,6 +26,7 @@ namespace Comments
             //                opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
             //            );
 
+            
             services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
             services.AddCors();
             services.AddSwaggerGen(c =>
@@ -41,7 +42,12 @@ namespace Comments
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
+            }
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
             {
@@ -58,9 +64,6 @@ namespace Comments
             app.UseAuthentication();
 
             app.UseMvc();
-
-            app.UseSwagger();
-            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
         }
     }
 }
