@@ -1,0 +1,2 @@
+data.postgres:
+  image: nanobox/postgresql:9.5
