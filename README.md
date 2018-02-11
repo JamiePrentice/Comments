@@ -2,7 +2,9 @@
 
 ### About
 
-A tiny (3.9 KB gzipped) comments framework that can be dropped on to any webpage. 
+A tiny (3.9 KB gzipped) comments framework that can be dropped on to any webpage with two lines of HTML.
+
+[Usage](#usage) 
 
 
 TL:DR;
@@ -20,7 +22,7 @@ TL:DR;
 ---
 
 
-### Usage
+### #Usage
 
 Add the two lines of code to where you'd like comments on your website.
 
@@ -119,11 +121,9 @@ a {
 
 - [ ] Come up with a good name. Replace all the instances of brand name with it.
 - [ ] Domain + Deploy.
-      - [ ] Deployed with versioning and integrity.
 
 ##### ReadMe
 
-- [ ] Update the file size after optimisations.
 - [ ] Add a screenshot and a working demo to a CodePen or similar.
 
 ##### Size
@@ -132,5 +132,4 @@ a {
 
 ##### Performance
 
-- [ ] Now that it's working optimise the JS.
 - [ ] gZip.
