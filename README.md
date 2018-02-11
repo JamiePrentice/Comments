@@ -4,14 +4,9 @@
 
 A tiny (3.9 KB gzipped) comments framework that can be dropped on to any webpage with two lines of HTML.
 
-- [Usage](#Usage) 
-- [Design](#Design) 
-- [ToDo](#ToDo) 
-
 
 TL:DR;
 
-- Not for profit.
 - No Ads.
 - No tracking.
 - No bloatware.
@@ -24,7 +19,7 @@ TL:DR;
 ---
 
 
-###Usage
+### Usage
 
 Add the two lines of code to where you'd like comments on your website.
 
@@ -41,7 +36,7 @@ We'll work out where we are and what comments to load based on the URL. Magic.
 ---
 
 
-###Design
+### Design
 
 We're using [milligram.css](https://github.com/milligram/milligram) to make brandname look great. We love it, but if you're not a big fan of the purple here's how to change the look:
 
@@ -117,7 +112,7 @@ a {
 ---
 
 
-###ToDo
+### ToDo
 
 ##### General
 
