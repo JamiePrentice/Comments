@@ -4,7 +4,9 @@
 
 A tiny (3.9 KB gzipped) comments framework that can be dropped on to any webpage with two lines of HTML.
 
-[Usage](#usage) 
+- [Usage](#Usage) 
+- [Design](#Design) 
+- [ToDo](#ToDo) 
 
 
 TL:DR;
@@ -22,7 +24,7 @@ TL:DR;
 ---
 
 
-### #Usage
+### Usage
 
 Add the two lines of code to where you'd like comments on your website.
 
