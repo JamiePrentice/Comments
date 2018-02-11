@@ -45,7 +45,7 @@ Add a .css file and import it after the javascript file.
 ```html
 <div id="brandname"></div>
 <script src="https://linktoacnd/brandname_latest.js" type="text/javascript" integrity="abc123"></script>
-<link rel="stylesheet" type="text/css" href="https://example.com/customestyles.css" />
+<link rel="stylesheet" type="text/css" href="https://example.com/your-styles-overrides.css" />
 ```
 
 **OR**
