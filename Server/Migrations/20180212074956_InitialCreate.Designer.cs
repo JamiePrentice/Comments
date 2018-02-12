@@ -11,8 +11,8 @@ using System;
 namespace Comments.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20180117200632_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20180212074956_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,8 +29,6 @@ namespace Comments.Migrations
                     b.Property<DateTime>("CreatedTime");
 
                     b.Property<string>("Domain");
-
-                    b.Property<string>("IPAddress");
 
                     b.Property<int?>("ParentCommentId");
 
@@ -55,8 +53,6 @@ namespace Comments.Migrations
                     b.Property<int>("CommentId");
 
                     b.Property<DateTime>("CreatedTime");
-
-                    b.Property<string>("IPAddress");
 
                     b.Property<string>("Text");
 
