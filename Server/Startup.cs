@@ -29,7 +29,6 @@ namespace Comments
             if (env != null && env.ToLower() == "development")
             {
                 services.AddDbContext<Context>(opt => opt.UseInMemoryDatabase("Comment"));
-                
                 services.AddSwaggerGen(c =>
                 {
                     c.SwaggerDoc("v1", new Info
@@ -45,7 +44,14 @@ namespace Comments
                     opt.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"))
                 );
             }
+            
+            var serviceProvider = services.BuildServiceProvider();
+            var context = serviceProvider.GetService<Context>();
 
+            if (!context.Database.EnsureCreated())
+            {
+                context.Database.Migrate();
+            }
  
         }
 

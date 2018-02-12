@@ -10,12 +10,6 @@ namespace Comments.Contexts
 		{
 		}
 
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			Database.EnsureCreated();
-			Database.Migrate();
-		}
-
 		public DbSet<Comment> Comments { get; set; }
 		public DbSet<Report> Reports { get; set; }
 	}
