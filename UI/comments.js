@@ -310,13 +310,13 @@ function generateReplyInput(id) {
 
 function getDomain() {
     var domain = window.location.hostname.replace("www.", "");
-    return domain == "" ? "localhost" : domain;
+    return domain == "" ? "localhost" : btoa(domain);
 }
 
 function getUrl() {
-    let url = window.location.pathname.substring(1).replace(/\//g, '-');
+    let url = window.location.pathname;
     url = url.substring(0, url.indexOf('.'));
-    return url;
+    return btoa(url);
 }
 
 function getRemainingCharacters(text, max, counter) {
