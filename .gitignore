@@ -47,3 +47,4 @@ Thumbs.db
 *.dotCover
 
 UI/node_modules/
+UI/dist/
