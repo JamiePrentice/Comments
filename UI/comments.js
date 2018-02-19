@@ -1,5 +1,6 @@
 const baseUrl = "http://localhost:5000/api/";
 const cssUrl = "https://brandname.ams3.digitaloceanspaces.com/brandname_latest.css";
+const maxCommentLength = 5000;
 
 loadCss();
 generateForm();
@@ -48,12 +49,14 @@ function generateForm() {
     let comment = wrap.appendChild(document.createElement("textarea"));
     comment.id = "brandname-comment";
     comment.type = "text";
-    comment.maxLength = 5000;
+    comment.maxLength = maxCommentLength;
     comment.onkeypress = function () {
-        getRemainingCharacters(comment.value, comment.maxLength, counter)
+        getRemainingCharacters(comment.value, comment.maxLength, counter);
     };
 
     let counter = wrap.appendChild(document.createElement("span"));
+    counter.id = "counter";
+    counter.innerHTML = maxCommentLength;
 
     let float_right = form.appendChild(document.createElement("div"));
     float_right.className = "float-right";
@@ -254,6 +257,7 @@ function clearInput() {
     document.getElementById("brandname-comment").value = "";
     document.getElementById("brandname-name").value = "";
     document.getElementById("brandname-comments-list").innerHTML = "";
+    document.getElementById("counter").innerHTML = maxCommentLength;
 }
 
 function generateReplyInput(id) {
@@ -277,7 +281,7 @@ function generateReplyInput(id) {
     let comment = wrap.appendChild(document.createElement("textarea"));
     comment.id = "comment-" + id + "-reply";
     comment.type = "text";
-    comment.maxLength = 5000;
+    comment.maxLength = maxCommentLength;
     comment.onkeypress = function () {
         getRemainingCharacters(comment.value, comment.maxLength, counter)
     };
@@ -306,7 +310,6 @@ function generateReplyInput(id) {
     };
 }
 
-
 function getDomain() {
     let domain = window.location.hostname.replace("www.", "");
     return domain == "" ? "localhost" : btoa(domain);
@@ -319,7 +322,7 @@ function getUrl() {
 }
 
 function getRemainingCharacters(text, max, counter) {
-    counter.innerHTML = max - text.length;
+    counter.innerHTML = max - (text.length + 1);
 }
 
 function timeSince(date) {
