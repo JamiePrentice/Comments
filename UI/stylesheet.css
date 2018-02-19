@@ -2,13 +2,12 @@
     margin: 5px;
 }
 
-.header{
+.header {
     display: inline;
 }
 
-.brand{
-    font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
-    float:right;
+.brand {
+    font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
     display: inline;
 }
 
@@ -55,7 +54,7 @@ label.score {
     text-align: center;
 }
 
-button.vote {
+.vote {
     height: 0;
     letter-spacing: 0;
     line-height: 0;
