@@ -1,6 +1,7 @@
 const baseUrl = "http://localhost:5000/api/";
 const cssUrl = "https://brandname.ams3.digitaloceanspaces.com/brandname_latest.css";
 const maxCommentLength = 5000;
+const maxNameLength = 25;
 
 loadCss();
 generateForm();
@@ -70,6 +71,7 @@ function generateForm() {
     let name = row.appendChild(document.createElement("input"));
     name.id = "brandname-name";
     name.type = "text";
+    name.maxLength = maxNameLength;
 
     let button = row.appendChild(document.createElement("input"));
     button.value = "Post";
@@ -300,6 +302,7 @@ function generateReplyInput(id) {
     let name = row.appendChild(document.createElement("input"));
     name.id = "comment-" + id + "-name";
     name.type = "text";
+    name.maxLength = maxNameLength;
 
     let button = row.appendChild(document.createElement("input"));
     button.value = "Reply";
