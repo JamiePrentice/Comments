@@ -19,7 +19,6 @@ function sendRequest(method, url, data) {
             xhr.open(method, url);
             xhr.send();
         }
-
     });
 }
 
@@ -39,7 +38,7 @@ function generateForm() {
     comment_label.className = "header";
 
     let brand = form.appendChild(document.createElement("a"));
-    brand.setAttribute('href',"https://github.com/JamiePrentice/Comments");
+    brand.setAttribute("href", "https://github.com/JamiePrentice/Comments");
     brand.innerHTML = "Powered by: Brandname";
     brand.className = "brand";
 
@@ -309,13 +308,13 @@ function generateReplyInput(id) {
 
 
 function getDomain() {
-    var domain = window.location.hostname.replace("www.", "");
+    let domain = window.location.hostname.replace("www.", "");
     return domain == "" ? "localhost" : btoa(domain);
 }
 
 function getUrl() {
     let url = window.location.pathname;
-    url = url.substring(0, url.indexOf('.'));
+    url = url.substring(0, url.indexOf("."));
     return btoa(url);
 }
 
