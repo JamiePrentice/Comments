@@ -1,4 +1,4 @@
-const baseUrl = "http://46.101.32.166/api/";
+const baseUrl = "https://ctrltwr.xyz/api/";
 const cssUrl = "https://brandname.ams3.digitaloceanspaces.com/brandname_latest.css";
 const maxCommentLength = 5000;
 const maxNameLength = 25;
@@ -320,7 +320,8 @@ function getDomain() {
 
 function getUrl() {
     let url = window.location.pathname;
-    url = url.substring(0, url.indexOf("."));
+    var dot = url.indexOf('.');
+    url = url.substring(0, dot != -1 ? dot : url.length);
     return btoa(url);
 }
 
