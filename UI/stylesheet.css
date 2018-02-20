@@ -9,6 +9,7 @@
 .brand {
     font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
     display: inline;
+    float: right;
 }
 
 .row {
