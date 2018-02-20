@@ -19,6 +19,12 @@ TL:DR;
 ---
 
 
+### Demo
+
+[Fresh Demo](https://codepen.io/JamiePrentice/pen/Zrxgxe)
+[Persisted Demo](https://codepen.io/JamiePrentice/full/Zrxgxe/)
+
+
 ### Usage
 
 Add the two lines of code to where you'd like comments on your website.
