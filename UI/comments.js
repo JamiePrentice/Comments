@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:5000/api/";
+const baseUrl = "http://46.101.32.166/api/";
 const cssUrl = "https://brandname.ams3.digitaloceanspaces.com/brandname_latest.css";
 const maxCommentLength = 5000;
 const maxNameLength = 25;
@@ -315,7 +315,7 @@ function generateReplyInput(id) {
 
 function getDomain() {
     let domain = window.location.hostname.replace("www.", "");
-    return domain == "" ? "localhost" : btoa(domain);
+    return domain === "" ? "localhost" : btoa(domain);
 }
 
 function getUrl() {
