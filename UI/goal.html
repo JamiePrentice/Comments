@@ -1,58 +1,56 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" type="text/css" href="./dist/brandname_latest.css">
 </head>
 
 <body>
-    <!-- START -->
     <div id="brandname">
         <label class="header">Comment:</label>
-        <a href="https://github.com/JamiePrentice/Comments" class="brand">Powered by</a>
+        <a href="https://github.com/JamiePrentice/Comments" class="brand">Powered by: Brandname</a>
         <div class="wrap">
             <textarea id="brandname-comment" maxlength="5000"></textarea>
-            <span>4990</span>
+            <span id="counter">5000</span>
         </div>
         <div class="float-right">
             <div class="row">
                 <label>Name:</label>
-                <input id="brandname-name" type="text">
+                <input id="brandname-name" type="text" maxlength="25">
                 <input type="submit" value="Post" class="button">
             </div>
         </div>
         <div id="brandname-comments-list">
-            <div id="comment-1">
+            <div id="comment-22">
                 <div class="row">
                     <div class="column column-4 center">
-                        <button id="comment-up-1" class="vote">▲</button>
-                        <div id="comment-score-1" class="score">0</div>
-                        <button id="comment-down-1" class="vote">▼</button>
+                        <button id="comment-up-22" class="vote">&#9650;</button>
+                        <div id="comment-score-22" class="score" voted="none">0</div>
+                        <button id="comment-down-22" class="vote">&#9660;</button>
                     </div>
-                    <div id="comment-text" class="column comment-text">Comment One</div>
+                    <div class="column comment-text">Comment One</div>
                 </div>
-                <div id="comment-footer-1" class="footer">
+                <div id="comment-footer-22" class="footer">
                     <a class="column column-offset-4">Reply</a>
-                    <div class="float-right">by Name One - 6s ago</div>
+                    <div class="float-right">by Name One - 13m ago</div>
                 </div>
-                <div id="comment-2" class="reply">
+                <div id="comment-23" class="reply">
                     <div class="row">
                         <div class="column column-4 center">
-                            <button id="comment-up-2" class="vote">▲</button>
-                            <div id="comment-score-2" class="score">0</div>
-                            <button id="comment-down-2" class="vote">▼</button>
+                            <button id="comment-up-23" class="vote">&#9650;</button>
+                            <div id="comment-score-23" class="score" voted="none">0</div>
+                            <button id="comment-down-23" class="vote">&#9660;</button>
                         </div>
-                        <div id="comment-text" class="column comment-text">Reply One</div>
+                        <div class="column comment-text">Reply One</div>
                     </div>
-                    <div id="comment-footer-2" class="footer">
+                    <div id="comment-footer-23" class="footer">
                         <a class="column column-offset-4">Reply</a>
-                        <div class="float-right">by Reply One - 0s ago</div>
+                        <div class="float-right">by Reply One - 13m ago</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END -->
+
 </body>
 
 </html>
