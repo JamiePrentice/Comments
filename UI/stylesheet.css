@@ -2,23 +2,23 @@
     margin: 5px;
 }
 
-.header {
+#brandname .header {
     display: inline;
 }
 
-.brand {
+#brandname .brand {
     font-family: Courier New, Courier, Lucida Sans Typewriter, Lucida Typewriter, monospace;
     display: inline;
     float: right;
 }
 
-.row {
+#brandname .row {
     flex-direction: row;
     margin-left: 0;
     width: 100%;
 }
 
-.row .column.column-4 {
+#brandname .row .column.column-4 {
     flex: 0 0 4%;
     margin-left: 0;
     max-width: 4rem;
@@ -26,36 +26,36 @@
     padding-left: 0;
 }
 
-.column.column-offset-4 {
+#brandname .column.column-offset-4 {
     margin-left: 4rem;
 }
 
-textarea {
+#brandname textarea {
     height: 8rem;
     margin-bottom: 0;
     resize: vertical;
 }
 
-input.button {
+#brandname input.button {
     margin-left: 0.5rem;
     padding: 0 1.5rem;
 }
 
-label {
+#brandname label {
     margin-right: 0.5rem;
     margin-top: 0.5rem;
 }
 
-label.score {
+#brandname label.score {
     margin-right: 0;
     margin-top: 0
 }
 
-.center {
+#brandname .center {
     text-align: center;
 }
 
-.vote {
+#brandname .vote {
     height: 0;
     letter-spacing: 0;
     line-height: 0;
@@ -63,46 +63,46 @@ label.score {
     padding: 1rem 0.8rem 0.8rem;
 }
 
-.comment-text {
+#brandname .comment-text {
     background: #EDE7F6;
     border-radius: .4rem;
     margin-top: 0.4rem;
     text-align: justify;
 }
 
-.score {
+#brandname .score {
     margin: 0 auto -0.4rem;
     text-align: center;
 }
 
-input[type="text"] {
+#brandname input[type="text"] {
     min-width: 22rem;
 }
 
-.footer {
+#brandname .footer {
     margin-bottom: 0.8rem;
 }
 
-.reply {
+#brandname .reply {
     float: right;
     width: calc(100% - 4rem)
 }
 
-.wrap {
+#brandname .wrap {
     position: relative;
 }
 
-.wrap span {
+#brandname .wrap span {
     position: absolute;
     bottom: 0.5rem;
     right: 1.8rem;
     color: lightgray;
 }
 
-button:focus,
-button:hover,
-input[type=submit]:focus,
-input[type=submit]:hover {
+#brandname button:focus,
+#brandname button:hover,
+#brandname nput[type=submit]:focus,
+#brandname input[type=submit]:hover {
     background-color: #7B1FA2;
     border-color: #7B1FA2;
 }
