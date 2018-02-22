@@ -31,6 +31,8 @@
 }
 
 #brandname textarea {
+    color: #606c76;
+    background: #FFFFFF;
     height: 8rem;
     margin-bottom: 0;
     resize: vertical;
@@ -76,6 +78,8 @@
 }
 
 #brandname input[type="text"] {
+    color: #606c76;
+    background: #FFFFFF;
     min-width: 22rem;
 }
 
