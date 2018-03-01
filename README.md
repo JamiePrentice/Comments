@@ -28,7 +28,9 @@ TL:DR;
 
 [Persisted Demo](https://codepen.io/JamiePrentice/full/Zrxgxe/)
 
-![Brandname Screenshot](https://i.imgur.com/4MIGzfy.png "Brandname Screenshot")
+![Brandname Screenshot](https://i.imgur.com/IusvN3e.png "Brandname Screenshot")
+
+
 ---
 
 
