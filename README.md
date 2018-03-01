@@ -1,5 +1,7 @@
 # Comments
 
+[![Known Vulnerabilities](https://snyk.io/test/github/jamieprentice/comments/badge.svg?targetFile=UI%2Fpackage.json)](https://snyk.io/test/github/jamieprentice/comments?targetFile=UI%2Fpackage.json)
+
 ### About
 
 A tiny (3.83 KB gzipped) comments framework that can be dropped on to any webpage with two lines of HTML.
